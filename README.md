@@ -66,6 +66,58 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Modules </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+  // CommonJS, every file is module (by default)
+  // Modules - Encapsulated Code (only share minimum)
+  
+  const sayHi = require("./data/func");
+  const students = require("./data/data");
+  const { names, singlePerson } = require("./data/data");
+  
+  sayHi("Susan");
+  sayHi(students.john);
+  sayHi(students.peter);
+  sayHi(singlePerson.name);
+  sayHi(names[0]);
+  ```
+
+  ### node\myapp\data\data.js:
+
+  ```js
+  // local
+  const secret = "SUPER SECRET";
+  // share
+  const john = "John";
+  const peter = "Peter";
+  
+  const person = {
+    name: "Bob",
+  };
+  
+  module.exports = { john, peter };
+  module.exports.singlePerson = person;
+  module.exports.names = ["James", "John", "Jane"];
+  ```
+
+  ### node\myapp\data\func.js:
+
+  ```js
+  const sayHi = (name) => {
+    console.log(`Hello there, ${name}`);
+  };
+  
+  // export default
+  module.exports = sayHi;
+  ```
+
+  ![image](https://github.com/user-attachments/assets/57237c99-f617-4ac1-a805-f40400a72a06)
+
+</details>
 
 
 
@@ -100,6 +152,35 @@ by Ifeanyi Omeata
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+  <summary>Node </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+
+  ```
+
+  ```
+  node app.js
+  ```
+
+  
+
+</details>
 
 
 
