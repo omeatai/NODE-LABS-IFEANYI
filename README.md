@@ -179,9 +179,55 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node FS Sync Module </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+  const { readFileSync, writeFileSync } = require("fs");
+  console.log("start");
+  
+  const first = readFileSync("./data/content/first.txt", "utf8");
+  const second = readFileSync("./data/content/second.txt", "utf8");
+  console.log(first, second);
+  
+  writeFileSync(
+    "./data/content/result-sync.txt",
+    `Here is the result : ${first}, ${second}`,
+    { flag: "a" }
+  );
+  
+  console.log("done with this task");
+  console.log("starting the next one");
+  ```
+
+  ```
+  node app.js
+  ```
+
+  ![image](https://github.com/user-attachments/assets/4023b159-1766-4e28-bab3-5a2092c06556)
+
+  ![image](https://github.com/user-attachments/assets/7c5aa4d6-719f-498d-b55e-3f698a5c5f27)
+
+</details>
+
+<details>
+  <summary>Node FS Async Module </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+
+  ```
+
+  ```
+  node app.js
+  ```
 
 
 
+</details>
 
 
 
