@@ -283,7 +283,99 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node HTTP Module - Simple Request </summary>
 
+  ### node\myapp\app.js:
+
+  ```js
+  const http = require("http");
+  
+  const server = http.createServer((req, res) => {
+    console.log("Request Method: ", req.method);
+    console.log("Request URL: ", req.url);
+    console.log("Request Path: ", req.path);
+    console.log("Request Query: ", req.query);
+    console.log("Request Params: ", req.params);
+    console.log("Request Headers: ", req.headers);
+    console.log("Request Body: ", req.body);
+    console.log("Request Status Code: ", req.statusCode);
+    console.log("Request Status Message: ", req.statusMessage);
+  
+    res.write("Welcome to our home page");
+    res.end();
+  });
+  
+  server.listen(5000);
+  ```
+
+  ```
+  node app.js
+  ```
+
+  ![image](https://github.com/user-attachments/assets/e8648d38-0a03-4c1c-a231-c9cc5a0657ce)
+  
+  ![image](https://github.com/user-attachments/assets/46a8267b-4e8a-41c5-acbb-80c8385c75ee)
+
+</details>
+
+<details>
+  <summary>Node HTTP Module - Conditional Requests </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+  const http = require("http");
+  
+  const server = http.createServer((req, res) => {
+    if (req.url === "/") {
+      res.end("Welcome to our home page");
+      return;
+    }
+    if (req.url === "/about") {
+      res.end("Here is our short history");
+      return;
+    }
+    res.end(`
+      <h1>Oops!</h1>
+    <p>We can't seem to find the page you are looking for</p>
+    <a href="/">back home</a>
+      `);
+  
+    // OR
+    // ###################################
+    // ###################################
+    // if (req.url === "/") {
+    //   res.end("Welcome to our home page");
+    // } else if (req.url === "/about") {
+    //   res.end("Here is our short history");
+    // } else {
+    //   res.end(`
+    //   <h1>Oops!</h1>
+    //   <p>We can't seem to find the page you are looking for</p>
+    //   <a href="/">back home</a>
+    //   `);
+    // }
+  });
+  
+  server.listen(5000, () => {
+    console.log("Server is listening on port 5000...");
+  });
+  ```
+
+  ```
+  node app.js
+  ```
+
+  ![image](https://github.com/user-attachments/assets/f031aac8-1260-4cad-9b2e-d1dd6a34d3e9)
+  
+  ![image](https://github.com/user-attachments/assets/ae374dd2-c090-4d70-b736-520b3853c74e)
+
+  ![image](https://github.com/user-attachments/assets/c2573757-b812-43cb-9d5d-e2d5e759585d)
+
+  ![image](https://github.com/user-attachments/assets/afc2b2ea-7ba0-499e-b0e9-dbc45584f028)
+
+</details>
 
 
 
