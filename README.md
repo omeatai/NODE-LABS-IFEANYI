@@ -152,6 +152,32 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node PATH Module </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+  const path = require("path");
+  console.log(path.sep);
+  
+  const filePath = path.join("/data/", "subfolder", "test.txt");
+  console.log(filePath);
+  
+  const base = path.basename(filePath);
+  console.log(base);
+  
+  const absolute = path.resolve(__dirname, "data", "subfolder", "test.txt");
+  console.log(absolute);
+  ```
+
+  ```
+  node app.js
+  ```
+
+  ![image](https://github.com/user-attachments/assets/8b849de5-b122-4014-b9c5-55b2b275b293)
+
+</details>
 
 
 
