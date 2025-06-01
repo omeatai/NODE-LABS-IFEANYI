@@ -218,14 +218,68 @@ by Ifeanyi Omeata
   ### node\myapp\app.js:
 
   ```js
-
+  const { readFile, writeFile } = require("fs");
+  
+  console.log("start");
+  
+  readFile("./data/content/first.txt", "utf8", (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    const first = result;
+  
+    readFile("./data/content/second.txt", "utf8", (err, result) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      const second = result;
+  
+      writeFile(
+        "./data/content/result-async.txt",
+        `Here is the result : ${first}, ${second}`,
+        (err, result) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          console.log("done with this task");
+        }
+      );
+    });
+  });
+  
+  console.log("starting next task");
   ```
 
-  ```
-  node app.js
+  # OR
+
+  ```js
+  const { readFile, writeFile } = require("fs/promises");
+  
+  const start = async () => {
+    try {
+      console.log("start");
+      const first = await readFile("./data/content/first.txt", "utf8");
+      const second = await readFile("./data/content/second.txt", "utf8");
+      await writeFile(
+        "./data/content/result-async.txt",
+        `Here is the result : ${first}, ${second}`
+      );
+      console.log("done with this task");
+    } catch (err) {
+      console.log(err);
+    }
+    console.log("starting next task");
+  };
+  
+  start();
   ```
 
+  ![image](https://github.com/user-attachments/assets/24925146-f113-4bb3-9b6e-f13d9867290f)
 
+  ![image](https://github.com/user-attachments/assets/5be77fca-b9d1-47a8-adfc-58225a3c0849)
 
 </details>
 
