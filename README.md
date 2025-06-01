@@ -67,7 +67,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node Exports and Require Modules </summary>
+  <summary>Node Exports and Require Module </summary>
 
   ### node\myapp\app.js:
 
@@ -119,7 +119,22 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node OS Module </summary>
 
+  ### node\myapp\app.js:
+
+  ```js
+
+  ```
+
+  ```
+  node app.js
+  ```
+
+  
+
+</details>
 
 
 
