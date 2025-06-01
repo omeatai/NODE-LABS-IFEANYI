@@ -2,21 +2,47 @@
 by Ifeanyi Omeata
 
 <details>
-  <summary>1 - Python Basics - Print String & Comments</summary>
+  <summary>Check Node Version</summary>
 
-  ### 1. Print String
+  ### Confirm Node Version
   
-  ```py
-  print("Hello World!")
-  print("Python is easy!")
-
-  if __name__ == '__main__':
-      print('Completed!')
   ```
-
-  ```
-
+  node --version
   ```
 
 </details>
 
+<details>
+  <summary>Introduction to Node</summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+  const amount = 100;
+  
+  if (amount < 100) {
+    console.log("small number");
+  } else {
+    console.log("large number");
+  }
+  
+  console.log("hey it's my first node app");
+  ```
+
+  ![image](https://github.com/user-attachments/assets/53dab7a3-7c26-42bf-b911-c4065cd9822a)
+
+</details>
+
+<details>
+  <summary>Using React.createElement()</summary>
+
+  ### Using React.createElement()
+
+  ```js
+
+  ```
+
+  ![image](https://github.com/user-attachments/assets/13dc2db3-257b-4f9b-a23b-1343a91b604a)
+
+
+</details>
