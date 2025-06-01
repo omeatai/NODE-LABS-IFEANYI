@@ -125,14 +125,30 @@ by Ifeanyi Omeata
   ### node\myapp\app.js:
 
   ```js
-
+  const os = require("os");
+  
+  // info about current user
+  const user = os.userInfo();
+  console.log("User Info: ", user);
+  
+  // method returns the system uptime in seconds
+  console.log("System Uptime: ", `The System Uptime is ${os.uptime()} seconds`);
+  
+  const currentOS = {
+    name: os.type(),
+    release: os.release(),
+    totalMem: os.totalmem(),
+    freeMem: os.freemem(),
+  };
+  
+  console.log("Current OS: ", currentOS);
   ```
 
   ```
   node app.js
   ```
 
-  
+  ![image](https://github.com/user-attachments/assets/20c0a217-d187-40db-9e9d-da879a135094)
 
 </details>
 
