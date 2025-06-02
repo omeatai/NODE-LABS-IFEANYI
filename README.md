@@ -402,6 +402,25 @@ by Ifeanyi Omeata
   npm i lodash
   ```
 
+  ### node\myapp\package.json:
+
+  ```json
+  {
+    "name": "myapp",
+    "version": "1.0.0",
+    "description": "myapp",
+    "main": "app.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "lodash": "^4.17.21"
+    }
+  }
+  ```
+
   ### node\myapp\app.js:
 
   ```js
@@ -431,25 +450,6 @@ by Ifeanyi Omeata
   server.listen(5000, () => {
     console.log("Server is listening on port 5000...");
   });
-  ```
-
-  ### node\myapp\package.json:
-
-  ```json
-  {
-    "name": "myapp",
-    "version": "1.0.0",
-    "description": "myapp",
-    "main": "app.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "lodash": "^4.17.21"
-    }
-  }
   ```
 
   ![image](https://github.com/user-attachments/assets/8b9cbbef-0fbf-44cd-b53a-8ad4e30a1954)
