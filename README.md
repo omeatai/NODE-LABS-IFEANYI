@@ -465,7 +465,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node Github - Repository Command Line </summary>
+  <summary>Node Github - Repository Command Line with .gitignore</summary>
 
   ### .gitignore:
 
