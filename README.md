@@ -528,6 +528,23 @@ by Ifeanyi Omeata
 </details>
 
 <details>
+  <summary>Node NPM Uninstall Dependency </summary>
+
+  ```
+  npm uninstall bootstrap
+  ```
+
+  OR
+
+  - [ ] Delete node_modules Folder
+  - [ ] Delete package-lock.json File
+  - [ ] Remove Bootstrap dependency ("bootstrap": "^4.6.0") from package.json
+  - [ ] Run "npm install"
+
+</details>
+
+
+<details>
   <summary>Node package.json scripts run </summary>
   
   ### node\myapp\app.js:
