@@ -378,9 +378,9 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node NPM Install </summary>
+  <summary>Node NPM Install - Lodash </summary>
 
-  ```js
+  ```
   // npm - global command, comes with node
   // npm --version
 
@@ -398,11 +398,96 @@ by Ifeanyi Omeata
   ```
 
   ```
-  node app.js
+  npm init -y
+  npm i lodash
   ```
+
+  ### node\myapp\app.js:
+
+  ```js
+  const http = require("http");
+  const _ = require("lodash");
+  
+  const items = [1, [2, [3, [4]]]];
+  const newItems = _.flattenDeep(items);
+  console.log(newItems);
+  
+  const server = http.createServer((req, res) => {
+    if (req.url === "/") {
+      res.end("Welcome to our home page");
+      return;
+    }
+    if (req.url === "/about") {
+      res.end("Here is our short history");
+      return;
+    }
+    res.end(`
+      <h1>Oops!</h1>
+    <p>We can't seem to find the page you are looking for</p>
+    <a href="/">back home</a>
+      `);
+  });
+  
+  server.listen(5000, () => {
+    console.log("Server is listening on port 5000...");
+  });
+  ```
+
+  ### node\myapp\package-lock.json:
+
+  ```json
+  {
+    "name": "myapp",
+    "version": "1.0.0",
+    "lockfileVersion": 3,
+    "requires": true,
+    "packages": {
+      "": {
+        "name": "myapp",
+        "version": "1.0.0",
+        "license": "ISC",
+        "dependencies": {
+          "lodash": "^4.17.21"
+        }
+      },
+      "node_modules/lodash": {
+        "version": "4.17.21",
+        "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz",
+        "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
+        "license": "MIT"
+      }
+    }
+  }
+  ```
+
+  ![image](https://github.com/user-attachments/assets/8b9cbbef-0fbf-44cd-b53a-8ad4e30a1954)
 
 </details>
 
+<details>
+  <summary>Node Github repository command Line </summary>
+
+  ### create a new repository on the command line:
+
+  ```
+  echo "# node-tutorial" >>> README.md
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git branch -M main
+  git remote add origin git@github.com: ifeanyi-omeata/node-tut.git
+  git push -u origin main
+  ```
+
+  ### push an existing repository from the command line:
+
+  ```
+  git remote add origin git@github.com: ifeanyi-omeata/node-tut.git
+  git branch -M main
+  git push -u origin main
+  ```
+
+</details>
 
 
 
