@@ -547,6 +547,36 @@ by Ifeanyi Omeata
 <details>
   <summary>Node package.json scripts run </summary>
   
+  ### node\myapp\package.json:
+
+  ```json
+  {
+    "name": "myapp",
+    "version": "1.0.0",
+    "description": "myapp",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "lodash": "^4.17.21"
+    },
+    "devDependencies": {
+      "nodemon": "^3.1.10"
+    }
+  }
+  ```
+
+  ### Run Script Command:
+
+  ```
+  npm run dev
+  ```
+
   ### node\myapp\app.js:
 
   ```js
@@ -576,36 +606,6 @@ by Ifeanyi Omeata
   server.listen(5000, () => {
     console.log("Server is listening on port 5000...");
   });
-  ```
-
-  ### node\myapp\package.json:
-
-  ```json
-  {
-    "name": "myapp",
-    "version": "1.0.0",
-    "description": "myapp",
-    "main": "app.js",
-    "scripts": {
-      "start": "node app.js",
-      "dev": "nodemon app.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "lodash": "^4.17.21"
-    },
-    "devDependencies": {
-      "nodemon": "^3.1.10"
-    }
-  }
-  ```
-
-  ### Run Script Command:
-
-  ```
-  npm run dev
   ```
 
   ![image](https://github.com/user-attachments/assets/6a6984e8-88d0-4c25-a2ca-dc0bfd879ff6)
