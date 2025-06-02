@@ -465,7 +465,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node Github repository command Line </summary>
+  <summary>Node Github - repository command Line </summary>
 
   ### create a new repository on the command line:
 
