@@ -380,7 +380,7 @@ by Ifeanyi Omeata
 <details>
   <summary>Node NPM Install - Lodash </summary>
 
-  ```
+  ```js
   // npm - global command, comes with node
   // npm --version
 
