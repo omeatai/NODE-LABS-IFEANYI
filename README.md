@@ -505,7 +505,7 @@ by Ifeanyi Omeata
 
   ### node\myapp\package.json:
 
-  ```
+  ```json
   {
     "name": "myapp",
     "version": "1.0.0",
