@@ -433,29 +433,21 @@ by Ifeanyi Omeata
   });
   ```
 
-  ### node\myapp\package-lock.json:
+  ### node\myapp\package.json:
 
   ```json
   {
     "name": "myapp",
     "version": "1.0.0",
-    "lockfileVersion": 3,
-    "requires": true,
-    "packages": {
-      "": {
-        "name": "myapp",
-        "version": "1.0.0",
-        "license": "ISC",
-        "dependencies": {
-          "lodash": "^4.17.21"
-        }
-      },
-      "node_modules/lodash": {
-        "version": "4.17.21",
-        "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz",
-        "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
-        "license": "MIT"
-      }
+    "description": "myapp",
+    "main": "app.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "lodash": "^4.17.21"
     }
   }
   ```
@@ -495,9 +487,115 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Install as devDependency or Dependency </summary>
 
+  ### Install Nodemon as Dependency:
 
+  ```
+  npm i nodemon
+  ```
 
+  ### Install Nodemon as devDependency:
+
+  ```
+  npm i nodemon -D
+  npm i nodemon --save-dev
+  ```
+
+  ### node\myapp\package.json:
+
+  ```
+  {
+    "name": "myapp",
+    "version": "1.0.0",
+    "description": "myapp",
+    "main": "app.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "lodash": "^4.17.21"
+    },
+    "devDependencies": {
+      "nodemon": "^3.1.10"
+    }
+  }
+  ```
+
+</details>
+
+<details>
+  <summary>Node package.json scripts </summary>
+  
+  ### node\myapp\app.js:
+
+  ```
+  const http = require("http");
+  const _ = require("lodash");
+  
+  const items = [1, [2, [3, [4]]]];
+  const newItems = _.flattenDeep(items);
+  console.log(newItems);
+  
+  const server = http.createServer((req, res) => {
+    if (req.url === "/") {
+      res.end("WELCOME TO OUR HOME PAGE!!!");
+      return;
+    }
+    if (req.url === "/about") {
+      res.end("Here is our short history");
+      return;
+    }
+    res.end(`
+      <h1>Oops!</h1>
+    <p>We can't seem to find the page you are looking for</p>
+    <a href="/">back home</a>
+      `);
+  });
+  
+  server.listen(5000, () => {
+    console.log("Server is listening on port 5000...");
+  });
+  ```
+
+  ### node\myapp\package.json:
+
+  ```json
+  {
+    "name": "myapp",
+    "version": "1.0.0",
+    "description": "myapp",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "lodash": "^4.17.21"
+    },
+    "devDependencies": {
+      "nodemon": "^3.1.10"
+    }
+  }
+  ```
+
+  ### Run Script Command:
+
+  ```
+  npm run dev
+  ```
+
+  ![image](https://github.com/user-attachments/assets/6a6984e8-88d0-4c25-a2ca-dc0bfd879ff6)
+
+  ![image](https://github.com/user-attachments/assets/1d555468-951b-4e53-8756-dd8953c2f19c)
+
+</details>
 
 
 
@@ -542,7 +640,7 @@ by Ifeanyi Omeata
   node app.js
   ```
 
-  
+
 
 </details>
 
