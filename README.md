@@ -528,7 +528,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node package.json scripts </summary>
+  <summary>Node package.json scripts run </summary>
   
   ### node\myapp\app.js:
 
