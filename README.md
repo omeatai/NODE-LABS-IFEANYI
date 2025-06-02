@@ -532,7 +532,7 @@ by Ifeanyi Omeata
   
   ### node\myapp\app.js:
 
-  ```
+  ```js
   const http = require("http");
   const _ = require("lodash");
   
