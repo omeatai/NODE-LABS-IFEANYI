@@ -380,8 +380,6 @@ by Ifeanyi Omeata
 <details>
   <summary>Node NPM Install </summary>
 
-  ### node\myapp\app.js:
-
   ```js
   // npm - global command, comes with node
   // npm --version
