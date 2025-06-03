@@ -760,8 +760,72 @@ by Ifeanyi Omeata
 
   ![image](https://github.com/user-attachments/assets/bbcf5adf-c5fa-4f8d-bb86-426b9747b2a6)
 
+  ### node\myapp\app.js:
+
+  ```js
+  const http = require('http')
+  
+  // const server = http.createServer((req, res) => {
+  //   res.end('Welcome')
+  // })
+  
+  // Using Event Emitter API
+  const server = http.createServer()
+  // emits request event
+  // subcribe to it / listen for it / respond to it
+  server.on('request', (req, res) => {
+    res.end('Welcome')
+  })
+  
+  server.listen(5000)
+  ```
+
 </details>
 
+<details>
+  <summary>Node Streams </summary>
+
+  ### Create Big File:
+
+  ```js
+  const { writeFileSync } = require("fs");
+  for (let i = 0; i < 100000; i++) {
+    writeFileSync("./data/content/big.txt", `hello world ${i}\n`, { flag: "a" });
+  }
+  ```
+
+  ![image](https://github.com/user-attachments/assets/5b89625d-3e96-438b-8388-6c509835af02)
+
+  ### Create Read Stream:
+
+  ```js
+  const { createReadStream } = require("fs");
+  
+  // default 64kb
+  // last buffer - remainder
+  // highWaterMark - control size
+  // const stream = createReadStream('./content/big.txt', { highWaterMark: 90000 })
+  // const stream = createReadStream('../content/big.txt', { encoding: 'utf8' })
+  const stream = createReadStream("./data/content/big.txt", {
+    highWaterMark: 90000,
+    encoding: "utf8",
+  });
+  
+  stream.on("data", (result) => {
+    console.log(result);
+  });
+  stream.on("error", (err) => console.log(err));
+  ```
+
+  ![image](https://github.com/user-attachments/assets/a100602a-4ec7-461e-a257-0db55202878c)
+
+  ### HTTP Stream Example:
+
+  ```js
+
+  ```
+
+</details>
 
 
 
