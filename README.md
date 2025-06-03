@@ -729,7 +729,22 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Events Emitter </summary>
 
+  ### node\myapp\app.js:
+
+  ```js
+
+  ```
+
+  ```
+  node app.js
+  ```
+
+
+
+</details>
 
 
 
