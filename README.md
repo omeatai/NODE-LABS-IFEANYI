@@ -617,7 +617,7 @@ by Ifeanyi Omeata
 <details>
   <summary>Node Async Patterns with Promises </summary>
 
-  ### node\myapp\app.js:
+  ### 1-node\myapp\app.js:
 
   ```js
   const { readFile } = require("fs");
@@ -635,7 +635,7 @@ by Ifeanyi Omeata
 
   ![image](https://github.com/user-attachments/assets/7d6a76c8-0c7c-462f-a61f-7bececa15cea)
 
-  ### node\myapp\app.js:
+  ### 2-node\myapp\app.js:
 
   ```js
   const { readFile } = require("fs");
@@ -661,7 +661,7 @@ by Ifeanyi Omeata
 
   ![image](https://github.com/user-attachments/assets/f75a5ac1-69aa-447a-a26a-6cf2a8be1cae)
 
-  ### node\myapp\app.js:
+  ### 3-node\myapp\app.js:
 
   ```js
   const { readFile, writeFile } = require("fs");
@@ -695,7 +695,7 @@ by Ifeanyi Omeata
 
   ![image](https://github.com/user-attachments/assets/4a0c84bc-4de9-466a-bb88-7231bbbdbb5f)
 
-  ### node\myapp\app.js:
+  ### 4-node\myapp\app.js:
 
   ```js
   // const { readFile, writeFile } = require("fs");
