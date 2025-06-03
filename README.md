@@ -545,7 +545,7 @@ by Ifeanyi Omeata
 
 
 <details>
-  <summary>Node package.json scripts run </summary>
+  <summary>Node Package.json scripts run </summary>
   
   ### node\myapp\package.json:
 
@@ -664,9 +664,68 @@ by Ifeanyi Omeata
   ### node\myapp\app.js:
 
   ```js
-
+  const { readFile, writeFile } = require("fs");
+  
+  const getText = (path) => {
+    return new Promise((resolve, reject) => {
+      readFile(path, "utf8", (err, data) => {
+        if (err) {
+          reject(err);
+          return;
+        } else {
+          resolve(data);
+          return;
+        }
+      });
+    });
+  };
+  
+  const start = async () => {
+    try {
+      const first = await getText("./data/content/first.txt");
+      const second = await getText("./data/content/second.txt");
+      console.log(first, second);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  start();
   ```
 
+  ![image](https://github.com/user-attachments/assets/4a0c84bc-4de9-466a-bb88-7231bbbdbb5f)
+
+  ### node\myapp\app.js:
+
+  ```js
+  // const { readFile, writeFile } = require("fs");
+  // const util = require('util')
+  // const readFilePromise = util.promisify(readFile)
+  // const writeFilePromise = util.promisify(writeFile)
+  
+  const { readFile, writeFile } = require("fs/promises");
+  
+  const start = async () => {
+    try {
+      const first = await readFile("./data/content/first.txt", "utf8");
+      const second = await readFile("./data/content/second.txt", "utf8");
+      await writeFile(
+        "./data/content/result-mind-grenade.txt",
+        `THIS IS AWESOME : ${first} ${second}`,
+        { flag: "a" }
+      );
+      console.log(first, second);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  start();
+  ```
+
+  ![image](https://github.com/user-attachments/assets/cafd8b76-0651-4f2e-8156-17a5760406a4)
+
+  ![image](https://github.com/user-attachments/assets/d3b9cf33-d2f8-4bae-af3e-c879cc214367)
 
 </details>
 
