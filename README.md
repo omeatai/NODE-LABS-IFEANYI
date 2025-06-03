@@ -614,6 +614,40 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Async Patterns with Promises </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+  const { readFile } = require("fs");
+
+  readFile("./data/content/first.txt", "utf8", (err, data) => {
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      console.log(data);
+      return;
+    }
+  });
+  ```
+
+  ![image](https://github.com/user-attachments/assets/7d6a76c8-0c7c-462f-a61f-7bececa15cea)
+
+  ### node\myapp\app.js:
+
+  ```js
+
+  ```
+
+  ```
+  node app.js
+  ```
+
+
+
+</details>
 
 
 
