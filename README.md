@@ -783,9 +783,9 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node Streams </summary>
+  <summary>Node Streams - Create Big File </summary>
 
-  ### Create Big File:
+  ### node\myapp\app.js:
 
   ```js
   const { writeFileSync } = require("fs");
@@ -796,7 +796,12 @@ by Ifeanyi Omeata
 
   ![image](https://github.com/user-attachments/assets/5b89625d-3e96-438b-8388-6c509835af02)
 
-  ### Create Read Stream:
+</details>
+
+<details>
+  <summary>Node Streams - Create Read Stream </summary>
+
+  ### node\myapp\app.js:
 
   ```js
   const { createReadStream } = require("fs");
@@ -819,16 +824,21 @@ by Ifeanyi Omeata
 
   ![image](https://github.com/user-attachments/assets/a100602a-4ec7-461e-a257-0db55202878c)
 
-  ### HTTP Stream Example:
+</details>
+
+<details>
+  <summary>Node Streams - HTTP Stream Example </summary>
+
+  ### node\myapp\app.js:
 
   ```js
 
   ```
 
+
+
+
 </details>
-
-
-
 
 
 
