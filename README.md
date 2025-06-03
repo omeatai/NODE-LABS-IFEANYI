@@ -735,14 +735,30 @@ by Ifeanyi Omeata
   ### node\myapp\app.js:
 
   ```js
-
+  const EventEmitter = require("events");
+  
+  const customEmitter = new EventEmitter();
+  
+  customEmitter.on("response", () => {
+    console.log("data collection started");
+  });
+  
+  customEmitter.on("response", (name, id) => {
+    console.log(
+      `data recieved user ${name || "unknown"} with id:${id || "unknown"}`
+    );
+  });
+  
+  customEmitter.on("response", () => {
+    console.log("data collection ended");
+  });
+  
+  customEmitter.emit("response");
+  customEmitter.emit("response", "john", 34);
+  customEmitter.emit("response", "peter", 34);
   ```
 
-  ```
-  node app.js
-  ```
-
-
+  ![image](https://github.com/user-attachments/assets/bbcf5adf-c5fa-4f8d-bb86-426b9747b2a6)
 
 </details>
 
