@@ -638,13 +638,34 @@ by Ifeanyi Omeata
   ### node\myapp\app.js:
 
   ```js
+  const { readFile } = require("fs");
 
+  const getText = (path) => {
+    return new Promise((resolve, reject) => {
+      readFile(path, "utf8", (err, data) => {
+        if (err) {
+          reject(err);
+          return;
+        } else {
+          resolve(data);
+          return;
+        }
+      });
+    });
+  };
+  
+  getText("./data/content/first.txt")
+    .then((result) => console.log(result))
+    .catch((err) => console.log(err));
   ```
 
-  ```
-  node app.js
-  ```
+  ![image](https://github.com/user-attachments/assets/f75a5ac1-69aa-447a-a26a-6cf2a8be1cae)
 
+  ### node\myapp\app.js:
+
+  ```js
+
+  ```
 
 
 </details>
