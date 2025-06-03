@@ -664,7 +664,7 @@ by Ifeanyi Omeata
   ### 3-node\myapp\app.js:
 
   ```js
-  const { readFile, writeFile } = require("fs");
+  const { readFile } = require("fs");
   
   const getText = (path) => {
     return new Promise((resolve, reject) => {
