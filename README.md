@@ -1034,6 +1034,16 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express - Install Express </summary>
+
+  ```
+  npm install express
+  npm install express@4.17
+  npm install express@4.17 --save
+  ```
+
+</details>
 
 
 
