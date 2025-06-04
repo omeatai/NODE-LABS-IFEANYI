@@ -1039,9 +1039,53 @@ by Ifeanyi Omeata
 
   ```
   npm install express
-  npm install express@4.17
-  npm install express@4.17 --save
+  npm install express@4.17.1
+  npm install express@4.17.1 --save
   ```
+
+  ```json
+  {
+    "name": "myexpressapp",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+      "nodemon": "^3.1.10"
+    },
+    "dependencies": {
+      "express": "^5.1.0"
+    }
+  }
+  ```
+
+</details>
+
+<details>
+  <summary>Node Express - Basics </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+
+  ```
+
+  ### node\myapp\index.html:
+  
+  ```html
+
+  ```
+
+  ```
+  node app.js
+  ```
+
+
 
 </details>
 
@@ -1061,9 +1105,8 @@ by Ifeanyi Omeata
 
 
 
-
 <details>
-  <summary>Node </summary>
+  <summary>Node Express -  </summary>
 
   ### node\myapp\app.js:
 
