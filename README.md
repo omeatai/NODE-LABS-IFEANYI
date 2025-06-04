@@ -880,6 +880,28 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node - HTTP Basic Headers </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+  const http = require("http");
+  
+  const server = http.createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.write("<h1>Home Page</h1>");
+    res.end();
+  });
+  
+  server.listen(5000, () => {
+    console.log("Server is running on port 5000");
+  });
+  ```
+
+  ![image](https://github.com/user-attachments/assets/fb9bdfcc-4a61-4f70-9eea-dae06f49a9f5)
+
+</details>
 
 
 
