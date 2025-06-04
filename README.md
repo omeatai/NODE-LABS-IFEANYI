@@ -905,6 +905,48 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node - HTTP Request Object to navigate Pages </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+  const http = require("http");
+  
+  const server = http.createServer((req, res) => {
+    const url = req.url;
+    const method = req.method;
+    console.log(url, method);
+  
+    if (url === "/") {
+      // home page
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write("<h1>Home Page</h1>");
+      res.end();
+    } else if (url === "/about") {
+      // about page
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write("<h1>About Page</h1>");
+      res.end();
+    } else {
+      // 404 page
+      res.writeHead(404, { "Content-Type": "text/html" });
+      res.write("<h1>404 | Page not found</h1>");
+      res.end();
+    }
+  });
+  
+  server.listen(5000, () => {
+    console.log("Server is running on port 5000");
+  });
+  ```
+
+  ![image](https://github.com/user-attachments/assets/8889105e-be8c-437f-be14-da8acbe9a9da)
+  ![image](https://github.com/user-attachments/assets/e01edb42-2b16-4758-8dcd-3f1eaef7b1db)
+  ![image](https://github.com/user-attachments/assets/e54f4533-b338-4cbe-abf6-0f5f2f42c166)
+  ![image](https://github.com/user-attachments/assets/0d21dfa3-8727-42cf-9892-6a1729abfa7d)
+
+</details>
 
 
 
