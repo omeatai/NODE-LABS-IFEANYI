@@ -949,7 +949,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node - HTTP route HTML File Pages </summary>
+  <summary>Node - HTTP Route HTML File Pages </summary>
 
   ### node\myapp\app.js:
 
