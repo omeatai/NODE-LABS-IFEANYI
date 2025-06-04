@@ -901,7 +901,7 @@ by Ifeanyi Omeata
 
   ![image](https://github.com/user-attachments/assets/fb9bdfcc-4a61-4f70-9eea-dae06f49a9f5)
 
-  ![image](https://github.com/user-attachments/assets/a3298ada-1fdb-443a-8117-f2ac615b65b5)
+  ![image](https://github.com/user-attachments/assets/6178f99c-8c76-46e9-96e8-1f89000f2647)
 
 </details>
 
