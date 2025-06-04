@@ -832,11 +832,27 @@ by Ifeanyi Omeata
   ### node\myapp\app.js:
 
   ```js
-
+  var http = require("http");
+  var fs = require("fs");
+  
+  http
+    .createServer(function (req, res) {
+      // const text = fs.readFileSync('./content/big.txt', 'utf8')
+      // res.end(text)
+      const fileStream = fs.createReadStream("./data/content/big.txt", "utf8");
+      fileStream.on("open", () => {
+        fileStream.pipe(res);
+      });
+      fileStream.on("error", (err) => {
+        res.end(err);
+      });
+    })
+    .listen(5000);
   ```
 
+  ![image](https://github.com/user-attachments/assets/e7f875b5-570a-4a36-8ea6-a6800da36319)
 
-
+  ![image](https://github.com/user-attachments/assets/26a6d9a9-4604-4c22-9b2a-2c0ea8955d01)
 
 </details>
 
