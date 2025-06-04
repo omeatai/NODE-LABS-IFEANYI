@@ -856,7 +856,29 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node - HTTP Basic Home Page </summary>
 
+  ### node\myapp\app.js:
+
+  ```js
+  const http = require("http");
+  
+  const server = http.createServer((req, res) => {
+    console.log("User accessed the home page");
+    res.end("<h1>Home Page</h1>");
+  });
+  
+  server.listen(5000, () => {
+    console.log("Server is running on port 5000");
+  });
+  ```
+
+  ![image](https://github.com/user-attachments/assets/a1311098-7bce-43ed-b27b-03e39faa7725)
+
+  ![image](https://github.com/user-attachments/assets/7d504b67-5d9f-4f50-b30e-a66d61dcb328)
+
+</details>
 
 
 
