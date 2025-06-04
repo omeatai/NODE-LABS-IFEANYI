@@ -948,6 +948,91 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node - HTTP route HTML File Pages </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+  const http = require("http");
+  const { readFileSync } = require("fs");
+  
+  // get all files
+  const homePage = readFileSync("./pages/index.html");
+  const aboutPage = readFileSync("./pages/about.html");
+  // const styles = readFileSync("./navbar-app/styles.css");
+  // const logo = readFileSync("./navbar-app/logo.svg");
+  // const browserIcon = readFileSync("./navbar-app/browser-app-512x512.png");
+  
+  const server = http.createServer((req, res) => {
+    const url = req.url;
+    const method = req.method;
+    console.log(url, method);
+  
+    if (url === "/") {
+      // home page
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(homePage);
+      res.end();
+    } else if (url === "/about") {
+      // about page
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(aboutPage);
+      res.end();
+    } else {
+      // 404 page
+      res.writeHead(404, { "Content-Type": "text/html" });
+      res.write("<h1>404 | Page not found</h1>");
+      res.end();
+    }
+  });
+  
+  server.listen(5000, () => {
+    console.log("Server is running on port 5000");
+  });
+  ```
+
+  ### node\myapp\index.html:
+  
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Home Page</title>
+    </head>
+    <body>
+      <h1>Home Page</h1>
+      <a href="/about">Go to About</a>
+    </body>
+  </html>
+  ```
+
+  ### node\myapp\about.html:
+  
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>About Page</title>
+    </head>
+    <body>
+      <h1>About Page</h1>
+      <a href="/">Go to Home</a>
+    </body>
+  </html>
+  ```
+
+  ![image](https://github.com/user-attachments/assets/7a31de36-0d0a-4963-91c7-3ee3958b7a91)
+  ![image](https://github.com/user-attachments/assets/38b04870-509a-4bca-9445-2ba284903606)
+  ![image](https://github.com/user-attachments/assets/1d6b4da9-f727-4181-a19d-191a40a516f5)
+
+</details>
 
 
 
@@ -973,6 +1058,12 @@ by Ifeanyi Omeata
   ### node\myapp\app.js:
 
   ```js
+
+  ```
+
+  ### node\myapp\index.html:
+  
+  ```html
 
   ```
 
