@@ -1337,7 +1337,7 @@ by Ifeanyi Omeata
 
   ### node\myexpressapp\data\data.js
   
-  ```json
+  ```js
   const products = [
     {
       id: 1,
