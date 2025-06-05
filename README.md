@@ -992,7 +992,7 @@ by Ifeanyi Omeata
   });
   ```
 
-  ### node\myapp\index.html:
+  ### node\myexpressapp\pages\index.html
   
   ```html
   <!DOCTYPE html>
@@ -1010,7 +1010,7 @@ by Ifeanyi Omeata
   </html>
   ```
 
-  ### node\myapp\about.html:
+  ### node\myexpressapp\pages\about.html
   
   ```html
   <!DOCTYPE html>
@@ -1067,18 +1067,111 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node Express - Basics </summary>
+  <summary>Node Express - Basic Example </summary>
 
   ### node\myapp\app.js:
 
   ```js
-
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  
+  app.get("/", (req, res) => {
+    console.log("user hit the Home Page");
+    res.status(200).send("Home Page");
+  });
+  
+  app.get("/about", (req, res) => {
+    console.log("user hit the About Page");
+    res.status(200).send("About Page");
+  });
+  
+  app.all("/*path", (req, res) => {
+    res.status(404).send("<h1>404 | Resource not found</h1>");
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+  
+  // app.get
+  // app.post
+  // app.put
+  // app.delete
+  // app.all
+  // app.use
+  // app.listen
   ```
 
-  ### node\myapp\index.html:
+  ![image](https://github.com/user-attachments/assets/ae4a2228-d51b-4267-8dd3-5e4b9004558a)
+
+</details>
+
+<details>
+  <summary>Node Express - Display HTML Files </summary>
+
+  ### node\myapp\app.js:
+
+  ```js
+  const path = require("path");
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  
+  app.get("/", (req, res) => {
+    console.log("user hit the Home Page");
+    res.status(200).sendFile(path.resolve(__dirname, "./pages/index.html"));
+    // res.status(200).sendFile(path.join(__dirname, "./pages/index.html"));
+  });
+  
+  app.get("/about", (req, res) => {
+    console.log("user hit the About Page");
+    res.status(200).sendFile(path.resolve(__dirname, "./pages/about.html"));
+  });
+  
+  app.all("/*path", (req, res) => {
+    res.status(404).send("<h1>404 | Resource not found</h1>");
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+  ```
+
+  ### node\myexpressapp\pages\index.html
   
   ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Home Page</title>
+    </head>
+    <body>
+      <h1>Home Page</h1>
+      <a href="/about">Go to About</a>
+    </body>
+  </html>
+  ```
 
+  ### node\myexpressapp\pages\about.html
+  
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>About Page</title>
+    </head>
+    <body>
+      <h1>About Page</h1>
+      <a href="/">Go to Home</a>
+    </body>
+  </html>
   ```
 
   ```
@@ -1088,8 +1181,6 @@ by Ifeanyi Omeata
 
 
 </details>
-
-
 
 
 
