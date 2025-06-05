@@ -951,7 +951,7 @@ by Ifeanyi Omeata
 <details>
   <summary>Node - HTTP Route HTML File Pages </summary>
 
-  ### node\myapp\app.js:
+  ### node\myexpressapp\app.js
 
   ```js
   const http = require("http");
@@ -1043,6 +1043,8 @@ by Ifeanyi Omeata
   npm install express@4.17.1 --save
   ```
 
+  ### node\myexpressapp\package.json
+
   ```json
   {
     "name": "myexpressapp",
@@ -1069,7 +1071,7 @@ by Ifeanyi Omeata
 <details>
   <summary>Node Express - Basic Example </summary>
 
-  ### node\myapp\app.js:
+  ### node\myexpressapp\app.js
 
   ```js
   const express = require("express");
@@ -1110,7 +1112,7 @@ by Ifeanyi Omeata
 <details>
   <summary>Node Express - Display HTML Files </summary>
 
-  ### node\myapp\app.js:
+  ### node\myexpressapp\app.js
 
   ```js
   const path = require("path");
@@ -1174,11 +1176,9 @@ by Ifeanyi Omeata
   </html>
   ```
 
-  ```
-  node app.js
-  ```
-
-
+  ![image](https://github.com/user-attachments/assets/8a825200-1c07-45b0-8eb5-a9cdd83212da)
+  ![image](https://github.com/user-attachments/assets/cdd7e015-58d7-467a-aa1d-b4b46185007e)
+  ![image](https://github.com/user-attachments/assets/fdedfdec-8a1a-4d4e-a057-2aaee0fa41ca)
 
 </details>
 
