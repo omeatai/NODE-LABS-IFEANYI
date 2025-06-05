@@ -1306,7 +1306,28 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express -  </summary>
 
+  ### node\myexpressapp\app.js
+
+  ```js
+
+  ```
+
+  ### node\myexpressapp\pages\index.html
+  
+  ```html
+
+  ```
+
+  ```
+  node app.js
+  ```
+
+
+
+</details>
 
 
 
