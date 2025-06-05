@@ -1182,7 +1182,129 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express - Display Static Files </summary>
 
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const path = require("path");
+  const port = 5000;
+  
+  //Serve static files middleware
+  app.use(express.static("./public"));
+  
+  app.get("/", (req, res) => {
+    console.log("user hit the Home Page");
+    res.status(200).sendFile(path.resolve(__dirname, "./pages/index.html"));
+    // res.status(200).sendFile(path.join(__dirname, "./pages/index.html"));
+  });
+  
+  app.get("/about", (req, res) => {
+    console.log("user hit the About Page");
+    res.status(200).sendFile(path.resolve(__dirname, "./pages/about.html"));
+  });
+  
+  app.all("/*path", (req, res) => {
+    res.status(404).send("<h1>404 | Resource not found</h1>");
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+  ```
+
+  ### node\myexpressapp\public\styles.css
+  
+  ```css
+  .btn {
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
+  .btn:hover {
+      background-color: black;
+  }
+  
+  .btn-link {
+      text-decoration: none;
+      color: white;
+  }
+  
+  .btn-link:hover {
+      color: white;
+  }
+  ```
+
+  ### node\myexpressapp\public\app.js
+  
+  ```js
+  const portfolio = document.querySelector("#portfolio");
+  const portfolioName = portfolio.textContent;
+  
+  portfolio.addEventListener("click", () => {
+    alert(`${portfolioName} button clicked`);
+  });
+  ```
+
+  ### node\myexpressapp\pages\index.html
+  
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Home Page</title>
+      <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+      <nav>
+        <img src="./logo.svg" alt="logo" />
+      </nav>
+      <h1>Home Page</h1>
+      <button class="btn" id="portfolio">View our Portfolio</button>
+      <a href="/about" class="btn btn-link">Go to About</a>
+      <script src="./app.js"></script>
+    </body>
+  </html>
+  ```
+
+  ### node\myexpressapp\pages\about.html
+  
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>About Page</title>
+      <link rel="stylesheet" href="./styles.css" />
+    </head>
+    <body>
+      <nav>
+        <img src="./logo.svg" alt="logo" />
+      </nav>
+      <h1>About Page</h1>
+      <a href="/" class="btn btn-link">Go to Home</a>
+    </body>
+  </html>
+  ```
+
+![image](https://github.com/user-attachments/assets/a42903d8-b525-47b7-9266-11e3b0d59005)
+![image](https://github.com/user-attachments/assets/18f2e127-735b-4367-8b8b-0bc1afcef667)
+![image](https://github.com/user-attachments/assets/b7f61adc-bf0b-4fd7-90b9-dcb9181e4082)
+![image](https://github.com/user-attachments/assets/ab0264ae-c001-454e-889d-7cadecd0e179)
+
+</details>
 
 
 
@@ -1199,13 +1321,13 @@ by Ifeanyi Omeata
 <details>
   <summary>Node Express -  </summary>
 
-  ### node\myapp\app.js:
+  ### node\myexpressapp\app.js
 
   ```js
 
   ```
 
-  ### node\myapp\index.html:
+  ### node\myexpressapp\pages\index.html
   
   ```html
 
