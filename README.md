@@ -1521,6 +1521,7 @@ by Ifeanyi Omeata
   module.exports = { products, people };
   ```
 
+  ![image](https://github.com/user-attachments/assets/d0fd8248-a9db-4802-97c3-9af4ec40728b)
   ![image](https://github.com/user-attachments/assets/f5564ab9-ffaf-46b8-ae93-37ea291e20fe)
   ![image](https://github.com/user-attachments/assets/75c250f4-4912-4d38-bf29-03d1539b07b8)
   ![image](https://github.com/user-attachments/assets/8564ea22-4b83-48c7-9d1b-cba5ee10d7fe)
