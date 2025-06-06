@@ -1388,6 +1388,167 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express - Using Params to filter Data </summary>
+
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const path = require("path");
+  const port = 5000;
+  
+  const { products, people } = require("./data/data");
+  
+  //Serve static files middleware
+  app.use(express.static("./public"));
+  
+  app.get("/", (req, res) => {
+    res.status(200).send(
+      `<h1>Home Page</h1>
+      <link rel="stylesheet" href="/styles.css">
+      <a class='btn btn-link' href='/api/v1/products'>products</a>
+      <a class='btn btn-link' href='/api/v1/people'>people</a>`
+    );
+  });
+  
+  app.get("/api/v1/products", (req, res) => {
+    const newProducts = products.map((product) => {
+      const { id, name, image } = product;
+      return { id, name, image };
+    });
+    return res.status(200).json(newProducts);
+  });
+  
+  app.get("/api/v1/products/:productID", (req, res) => {
+    const { productID } = req.params;
+    const singleProduct = products.find(
+      (product) => product.id === Number(productID)
+    );
+    if (!singleProduct) {
+      return res.status(404).send("404 | Product not found");
+    }
+    return res.status(200).json(singleProduct);
+  });
+  
+  app.get("/api/v1/products/:productID/reviews/:reviewID", (req, res) => {
+    const { productID, reviewID } = req.params;
+    console.log(productID, reviewID);
+    res.send(`ProductID: ${productID} | ReviewID: ${reviewID}`);
+  });
+  
+  app.get("/api/v1/people", (req, res) => {
+    res.status(200).json(people);
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ### node\myexpressapp\public\styles.css
+  
+  ```css
+  .btn {
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
+  .btn:hover {
+      background-color: black;
+  }
+  
+  .btn-link {
+      text-decoration: none;
+      color: white;
+  }
+  
+  .btn-link:hover {
+      color: white;
+  }
+  ```
+
+  ### node\myexpressapp\data\data.js
+  
+  ```js
+  const products = [
+    {
+      id: 1,
+      name: "albany sofa",
+      image:
+        "https://dl.airtable.com/.attachments/6ac7f7b55d505057317534722e5a9f03/9183491e/product-3.jpg",
+      price: 39.95,
+      desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    },
+    {
+      id: 2,
+      name: "entertainment center",
+      image:
+        "https://dl.airtable.com/.attachments/da5e17fd71f50578d525dd5f596e407e/d5e88ac8/product-2.jpg",
+      price: 29.98,
+      desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    },
+    {
+      id: 3,
+      name: "albany sectional",
+      image:
+        "https://dl.airtable.com/.attachments/05ecddf7ac8d581ecc3f7922415e7907/a4242abc/product-1.jpeg",
+      price: 10.99,
+      desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    },
+    {
+      id: 4,
+      name: "leather sofa",
+      image:
+        "https://dl.airtable.com/.attachments/3245c726ee77d73702ba8c3310639727/f000842b/product-5.jpg",
+      price: 9.99,
+      desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    },
+  ];
+  const people = [
+    { id: 1, name: "john" },
+    { id: 2, name: "peter" },
+    { id: 3, name: "susan" },
+    { id: 4, name: "anna" },
+    { id: 5, name: "emma" },
+  ];
+  module.exports = { products, people };
+  ```
+
+  ![image](https://github.com/user-attachments/assets/f5564ab9-ffaf-46b8-ae93-37ea291e20fe)
+  ![image](https://github.com/user-attachments/assets/75c250f4-4912-4d38-bf29-03d1539b07b8)
+  ![image](https://github.com/user-attachments/assets/8564ea22-4b83-48c7-9d1b-cba5ee10d7fe)
+  ![image](https://github.com/user-attachments/assets/2b8f111b-ecdf-4d29-9bab-6dddf6780743)
+  ![image](https://github.com/user-attachments/assets/332dd07a-ac7a-42b5-94b6-c65bc832ddd5)
+  ![image](https://github.com/user-attachments/assets/6a1ddbf7-64d1-4607-ae58-9549d6036cc0)
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
