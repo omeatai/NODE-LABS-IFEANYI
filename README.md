@@ -1719,7 +1719,66 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express - app.use Middleware </summary>
 
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  const logger = require("./middleware/logger");
+  
+  //Serve static files middleware
+  app.use(express.static("./public"));
+  
+  // Middleware
+  app.use("/", logger);
+  
+  // Routes
+  // Home Page
+  app.get("/", (req, res) => {
+    const { method, url, time } = req.data;
+    res.status(200).send(`<h1>Home Page</h1>
+    <h2>Method: ${method}</h2>
+    <h2>URL: ${url}</h2>
+    <h2>Time: ${time}</h2>`);
+  });
+  
+  //About Page
+  app.get("/about", (req, res) => {
+    res.status(200).send(`<h1>About Page</h1>`);
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ### node\myexpressapp\middleware\logger.js
+  
+  ```js
+  const logger = (req, res, next) => {
+    const method = req.method;
+    const url = req.url;
+    const time = new Date().getFullYear();
+    const data = { method, url, time };
+    console.log(data);
+    req.data = data;
+    next();
+  };
+  
+  module.exports = logger;
+
+  ```
+
+  ![image](https://github.com/user-attachments/assets/a5cb065b-fdb0-41b6-93b2-c235656d3e14)
+  ![image](https://github.com/user-attachments/assets/7a79a3f5-ddcf-4dd9-9a99-b49c0acc16f2)
+
+
+</details>
 
 
 
