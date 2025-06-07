@@ -1667,10 +1667,57 @@ by Ifeanyi Omeata
 
   ![image](https://github.com/user-attachments/assets/5d00b5bd-d6b6-4dc7-b7fc-48e159ce75c4)
   ![image](https://github.com/user-attachments/assets/d00a9964-872d-49a9-aaeb-ca57ca2fde26)
+  ![image](https://github.com/user-attachments/assets/5537a8c4-d47d-4961-86e7-b208090a4d5f)
 
 </details>
 
+<details>
+  <summary>Node Express - Middleware Basics </summary>
 
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  
+  //Serve static files middleware
+  app.use(express.static("./public"));
+  
+  const logger = (req, res, next) => {
+    const method = req.method;
+    const url = req.url;
+    const time = new Date().getFullYear();
+    const data = { method, url, time };
+    console.log(data);
+    req.data = data;
+    next();
+  };
+  
+  // Home Page
+  app.get("/", logger, (req, res) => {
+    const { method, url, time } = req.data;
+    res.status(200).send(`<h1>Home Page</h1>
+    <h2>Method: ${method}</h2>
+    <h2>URL: ${url}</h2>
+    <h2>Time: ${time}</h2>`);
+  });
+  
+  //About Page
+  app.get("/about", logger, (req, res) => {
+    res.status(200).send(`<h1>About Page</h1>`);
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ![image](https://github.com/user-attachments/assets/3df4c95d-fa16-4c66-83de-7f6a5a87d01c)
+  ![image](https://github.com/user-attachments/assets/6394eade-c108-41f0-b499-480713a273d3)
+
+</details>
 
 
 
