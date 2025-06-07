@@ -1531,6 +1531,144 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express - Using Query Strings to search Data </summary>
+
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const path = require("path");
+  const port = 5000;
+  
+  const { products, people } = require("./data/data");
+  
+  //Serve static files middleware
+  app.use(express.static("./public"));
+  
+  // Home Page
+  app.get("/", (req, res) => {
+    res.status(200).send(
+      `<h1>Home Page</h1>
+      <link rel="stylesheet" href="/styles.css">
+      <a class='btn btn-link' href='/api/v1/products'>products</a>
+      <a class='btn btn-link' href='/api/v1/people'>people</a>`
+    );
+  });
+  
+  // Products Page
+  app.get("/api/v1/products", (req, res) => {
+    const newProducts = products.map((product) => {
+      const { id, name, image } = product;
+      return { id, name, image };
+    });
+    return res.status(200).json(newProducts);
+  });
+  
+  // Products Query Page
+  app.get("/api/v1/products/query", (req, res) => {
+    const { search, limit } = req.query;
+    console.log({ search, limit });
+    // return res.status(200).json({ search, limit });
+    let sortedProducts = [...products];
+    if (search) {
+      sortedProducts = sortedProducts.filter((product) => {
+        return product.name.startsWith(search);
+      });
+    }
+    if (limit) {
+      sortedProducts = sortedProducts.slice(0, Number(limit));
+    }
+    if (sortedProducts.length < 1) {
+      // return res.status(200).send("No products found");
+      return res.status(200).json({ success: true, data: [] });
+    }
+    return res.status(200).json(sortedProducts);
+  });
+  
+  // Single Product Page
+  app.get("/api/v1/products/:productID", (req, res) => {
+    const { productID } = req.params;
+    const singleProduct = products.find(
+      (product) => product.id === Number(productID)
+    );
+    if (!singleProduct) {
+      return res.status(404).send("404 | Product not found");
+    }
+    return res.status(200).json(singleProduct);
+  });
+  
+  // Single Product Reviews Page
+  app.get("/api/v1/products/:productID/reviews/:reviewID", (req, res) => {
+    const { productID, reviewID } = req.params;
+    console.log(productID, reviewID);
+    res.send(`ProductID: ${productID} | ReviewID: ${reviewID}`);
+  });
+  
+  // People Page
+  app.get("/api/v1/people", (req, res) => {
+    res.status(200).json(people);
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ### node\myexpressapp\data\data.js
+  
+  ```js
+  const products = [
+    {
+      id: 1,
+      name: "albany sofa",
+      image:
+        "https://dl.airtable.com/.attachments/6ac7f7b55d505057317534722e5a9f03/9183491e/product-3.jpg",
+      price: 39.95,
+      desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    },
+    {
+      id: 2,
+      name: "entertainment center",
+      image:
+        "https://dl.airtable.com/.attachments/da5e17fd71f50578d525dd5f596e407e/d5e88ac8/product-2.jpg",
+      price: 29.98,
+      desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    },
+    {
+      id: 3,
+      name: "albany sectional",
+      image:
+        "https://dl.airtable.com/.attachments/05ecddf7ac8d581ecc3f7922415e7907/a4242abc/product-1.jpeg",
+      price: 10.99,
+      desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    },
+    {
+      id: 4,
+      name: "leather sofa",
+      image:
+        "https://dl.airtable.com/.attachments/3245c726ee77d73702ba8c3310639727/f000842b/product-5.jpg",
+      price: 9.99,
+      desc: `I'm baby direct trade farm-to-table hell of, YOLO readymade raw denim venmo whatever organic gluten-free kitsch schlitz irony af flexitarian.`,
+    },
+  ];
+  const people = [
+    { id: 1, name: "john" },
+    { id: 2, name: "peter" },
+    { id: 3, name: "susan" },
+    { id: 4, name: "anna" },
+    { id: 5, name: "emma" },
+  ];
+  module.exports = { products, people };
+
+  ```
+
+  ![image](https://github.com/user-attachments/assets/5d00b5bd-d6b6-4dc7-b7fc-48e159ce75c4)
+  ![image](https://github.com/user-attachments/assets/d00a9964-872d-49a9-aaeb-ca57ca2fde26)
+
+</details>
 
 
 
