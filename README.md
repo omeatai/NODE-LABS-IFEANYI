@@ -4,7 +4,7 @@ by Ifeanyi Omeata
 <details>
   <summary>Check Node Version</summary>
 
-  ### Confirm Node Version
+  ### Confirm Node Versions
   
   ```
   node --version
