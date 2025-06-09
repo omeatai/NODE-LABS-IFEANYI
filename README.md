@@ -1784,6 +1784,37 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express -  app.use Multiple Middleware Functions </summary>
+
+  ### node\myexpressapp\app.js
+
+  ```js
+
+  ```
+
+  ### node\myexpressapp\pages\index.html
+  
+  ```html
+
+  ```
+
+  ```
+  node app.js
+  ```
+
+
+
+</details>
+
+
+
+
+
+
+
+
+
 
 
 
