@@ -1867,7 +1867,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node Express - app.use Morgen Loggng Middleware </summary>
+  <summary>Node Express - app.use Morgan Loggng Middleware </summary>
 
   ### Install Morgan Middleware
   
