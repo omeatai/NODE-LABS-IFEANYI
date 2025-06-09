@@ -1943,11 +1943,69 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express - GET Request </summary>
 
-<hr>
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  
+  const { people } = require("./data/data");
+  
+  app.get("/api/v1/people", (req, res) => {
+    res.status(200).json({ success: true, data: people });
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ### node\myexpressapp\data\data.js
+  
+  ```js
+  const people = [
+    { id: 1, name: "john" },
+    { id: 2, name: "peter" },
+    { id: 3, name: "susan" },
+    { id: 4, name: "anna" },
+    { id: 5, name: "emma" },
+  ];
+  module.exports = { products, people };
+
+  ```
+
+  ![image](https://github.com/user-attachments/assets/21cda0e2-c961-4dc7-8878-55cd516804c2)
+  ![image](https://github.com/user-attachments/assets/cdab8ee5-6bca-4c2a-934f-df7588bec52e)
+
+</details>
+
+<details>
+  <summary>Node Express - POST Request </summary>
+
+  ### node\myexpressapp\app.js
+
+  ```js
+
+  ```
+
+  ### node\myexpressapp\pages\index.html
+  
+  ```html
+
+  ```
+
+  ```
+  node app.js
+  ```
 
 
 
+</details>
 
 
 
@@ -1999,6 +2057,27 @@ by Ifeanyi Omeata
 
 
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <hr>
