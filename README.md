@@ -1724,7 +1724,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node Express - app.use Middleware </summary>
+  <summary>Node Express - app.use Middleware with logger </summary>
 
   ### node\myexpressapp\app.js
 
@@ -1785,25 +1785,84 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node Express -  app.use Multiple Middleware Functions </summary>
+  <summary>Node Express -  app.use Multiple Middleware Functions with logger and auth </summary>
 
   ### node\myexpressapp\app.js
 
   ```js
-
-  ```
-
-  ### node\myexpressapp\pages\index.html
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  const logger = require("./middleware/logger");
+  const auth = require("./middleware/auth");
   
-  ```html
+  //Serve static files middleware
+  app.use(express.static("./public"));
+  
+  // Middleware
+  app.use("/", [logger, auth]);
+  
+  // Routes
+  // Home Page
+  app.get("/", (req, res) => {
+    const { method, url, time } = req.data;
+    res.status(200).send(`<h1>Home Page</h1>
+    <h2>Method: ${method}</h2>
+    <h2>URL: ${url}</h2>
+    <h2>Time: ${time}</h2>
+    <h2>User: ${req.user}</h2>`);
+  });
+  
+  //About Page
+  app.get("/about", (req, res) => {
+    res.status(200).send(`<h1>About Page</h1>`);
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
 
   ```
 
-  ```
-  node app.js
+  ### node\myexpressapp\middleware\logger.js
+
+  ```js
+  const logger = (req, res, next) => {
+    const method = req.method;
+    const url = req.url;
+    const time = new Date().getFullYear();
+    const data = { method, url, time };
+    console.log(data);
+    req.data = data;
+    next();
+  };
+  
+  module.exports = logger;
+
   ```
 
+  ### node\myexpressapp\middleware\auth.js
 
+  ```js
+  const auth = (req, res, next) => {
+    const { user } = req.query;
+    if (user === "john") {
+      req.user = "john";
+      next();
+    } else {
+      res.status(401).send("<h1>401 | Unauthorized</h1>");
+    }
+  };
+  
+  module.exports = auth;
+
+  ```
+
+  ![image](https://github.com/user-attachments/assets/4f4d4e0b-af8b-452f-881d-19e190012b3f)
+  ![image](https://github.com/user-attachments/assets/a015055b-3f05-4354-837e-1c9dba27a856)
+  ![image](https://github.com/user-attachments/assets/fc784a65-191c-4579-b6d2-e538f8ca3708)
+  ![image](https://github.com/user-attachments/assets/867dc109-a173-4325-bb98-c828da07f753)
+  ![image](https://github.com/user-attachments/assets/f9087fb9-9d6b-43fc-9bea-ca5af9dfc833)
 
 </details>
 
