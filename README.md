@@ -1866,6 +1866,85 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express - app.use Morgen Loggng Middleware </summary>
+
+  ### Install Morgan Middleware
+  
+  ```
+  npm i morgan
+  ```
+
+  ### node\myexpressapp\package.json
+  
+  ```json
+  {
+    "name": "myexpressapp",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+      "nodemon": "^3.1.10"
+    },
+    "dependencies": {
+      "express": "^5.1.0",
+      "morgan": "^1.10.0"
+    }
+  }
+
+  ```
+
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  const morgan = require("morgan");
+  const logger = require("./middleware/logger");
+  const auth = require("./middleware/auth");
+  
+  //Serve static files middleware
+  app.use(express.static("./public"));
+  
+  // Middleware
+  app.use("/", morgan("tiny")); //morgan is a middleware that logs the request to the console: morgan("dev")
+  
+  // Routes
+  // Home Page
+  app.get("/", [logger, auth], (req, res) => {
+    const { method, url, time } = req.data;
+    res.status(200).send(`<h1>Home Page</h1>
+    <h2>Method: ${method}</h2>
+    <h2>URL: ${url}</h2>
+    <h2>Time: ${time}</h2>
+    <h2>User: ${req.user}</h2>`);
+  });
+  
+  //About Page
+  app.get("/about", (req, res) => {
+    res.status(200).send(`<h1>About Page</h1>`);
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ![image](https://github.com/user-attachments/assets/dbff3ea4-dc4a-4def-bc6d-897d8c9068c8)
+  ![image](https://github.com/user-attachments/assets/248a1a96-957f-4a38-b866-23a230d8c402)
+
+</details>
+
+
+<hr>
 
 
 
