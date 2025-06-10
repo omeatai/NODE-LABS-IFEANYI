@@ -1990,20 +1990,83 @@ by Ifeanyi Omeata
   ### node\myexpressapp\app.js
 
   ```js
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  
+  const { people } = require("./data/data");
+  
+  // static assets
+  app.use(express.static("./public"));
+  
+  // parse form data
+  app.use(express.urlencoded({ extended: false }));
+  
+  app.post("/login", (req, res) => {
+    console.log(req.body);
+    const { name } = req.body;
+    if (name) {
+      return res
+        .status(200)
+        .send(
+          `<h1>Welcome ${name.slice(0, 1).toUpperCase() + name.slice(1)}!</h1>`
+        );
+    }
+    res.status(401).send("Please Provide Credentials");
+  });
+  
+  app.get("/api/v1/people", (req, res) => {
+    res.status(200).json({ success: true, data: people });
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
 
   ```
 
-  ### node\myexpressapp\pages\index.html
+  ### node\myexpressapp\public\index.html
   
   ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="./styles.css" />
+      <link rel="stylesheet" href="./normalize.css" />
+      <title>Traditional</title>
+    </head>
+    <body>
+      <nav>
+        <div class="nav-center">
+          <h5>HTTP Methods</h5>
+          <div>
+            <a href="index.html">regular </a>
+            <a href="javascript.html">javascript </a>
+          </div>
+        </div>
+      </nav>
+      <main>
+        <form action="/login" method="POST">
+          <h3>Traditional Form</h3>
+          <div class="form-row">
+            <label for="name"> enter name </label>
+            <input type="text" name="name" id="name" autocomplete="false" />
+          </div>
+          <button type="submit" class="block">submit</button>
+        </form>
+      </main>
+    </body>
+  </html>
 
   ```
 
-  ```
-  node app.js
-  ```
-
-
+  ![image](https://github.com/user-attachments/assets/69b387c6-e300-4596-a8ed-a5ad2518d25b)
+  ![image](https://github.com/user-attachments/assets/253ca508-8d06-472d-a5db-c33a0b30c620)
+  ![image](https://github.com/user-attachments/assets/65bd691c-623a-4986-81cb-f18be496a02f)
+  ![image](https://github.com/user-attachments/assets/e8c579cd-041d-457e-8efe-5532245b3c47)
 
 </details>
 
