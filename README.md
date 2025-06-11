@@ -2445,8 +2445,168 @@ by Ifeanyi Omeata
   ![image](https://github.com/user-attachments/assets/79de82ea-e8d4-49ff-8d73-7b26e294cb0a)
   ![image](https://github.com/user-attachments/assets/540ccb3c-7ea4-49e5-963d-af68dea7edff)
 
+</details>
+
+<details>
+  <summary>Node Express - Set up Routes with Express Router </summary>
+
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  
+  const people = require("./routes/people");
+  const auth = require("./routes/auth");
+  
+  // static assets
+  app.use(express.static("./public"));
+  
+  // parse form data
+  app.use(express.urlencoded({ extended: false }));
+  
+  // parse json
+  app.use(express.json());
+  
+  // people route
+  app.use("/api/v1/people", people);
+  
+  // auth route
+  app.use("/login", auth);
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ### node\myexpressapp\routes\people.js
+  
+  ```js
+  const express = require("express");
+  const router = express.Router();
+  
+  const { people } = require("../data/data");
+  
+  // get all people
+  router.get("/", (req, res) => {
+    res.status(200).json({ success: true, data: people });
+  });
+  
+  // post request
+  router.post("/", (req, res) => {
+    const { name } = req.body;
+    if (!name) {
+      return res
+        .status(400)
+        .json({ success: false, msg: "Please Provide Credentials" });
+    }
+    res.status(201).json({
+      success: true,
+      data: [...people, { id: people.length + 1, name: name }],
+    });
+  });
+  
+  router.delete("/:id", (req, res) => {
+    const { id } = req.params;
+    const person = people.find((person) => person.id === Number(id));
+    if (!person) {
+      return res
+        .status(404)
+        .json({ success: false, msg: `Person Not Found with id: ${id}` });
+    }
+    const newPeople = people.filter((person) => person.id !== Number(id));
+    res.status(200).json({ success: true, data: newPeople });
+  });
+  
+  router.put("/:id", (req, res) => {
+    const { id } = req.params;
+    const { name } = req.body;
+    if (!name) {
+      return res.status(400).json({ success: false, msg: "Please Provide Name" });
+    }
+    const person = people.find((person) => person.id === Number(id));
+    if (!person) {
+      return res
+        .status(404)
+        .json({ success: false, msg: `Person Not Found with id ${id}` });
+    }
+    const newPeople = people.map((person) => {
+      if (person.id === Number(id)) {
+        person.name = name;
+      }
+      return person;
+    });
+    res.status(200).json({ success: true, data: newPeople });
+  });
+  
+  module.exports = router;
+
+  ```
+
+  ### node\myexpressapp\routes\auth.js
+
+  ```js
+  const express = require("express");
+  const router = express.Router();
+  
+  router.post("/", (req, res) => {
+    console.log(req.body);
+    const { name } = req.body;
+    if (!name) {
+      return res.status(401).send("<h1>Please Provide Credentials</h1>");
+    }
+    return res
+      .status(200)
+      .send(
+        `<h1>Welcome ${name.slice(0, 1).toUpperCase() + name.slice(1)}!</h1>`
+      );
+  });
+  
+  module.exports = router;
+
+  ```
+
+  ### node\myexpressapp\data\data.js
+
+  ```js
+  const people = [
+    { id: 1, name: "john" },
+    { id: 2, name: "peter" },
+    { id: 3, name: "susan" },
+    { id: 4, name: "anna" },
+    { id: 5, name: "emma" },
+  ];
+  module.exports = { products, people };
+  ```
+
+  ![image](https://github.com/user-attachments/assets/807d705c-649a-48bb-b8de-7231008725c6)
+  ![image](https://github.com/user-attachments/assets/bd288ac0-ed5e-4644-af18-4b0f5f1f9034)
+  ![image](https://github.com/user-attachments/assets/dbfa0e9c-060a-4be2-9b96-742a73d26550)
+  ![image](https://github.com/user-attachments/assets/81a6912c-a6bf-4193-ab5f-156d8ff20439)
 
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
