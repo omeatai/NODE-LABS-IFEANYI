@@ -2334,6 +2334,119 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express - DELETE Request with Postman </summary>
+
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  
+  const { people } = require("./data/data");
+  
+  // static assets
+  app.use(express.static("./public"));
+  
+  // parse form data
+  app.use(express.urlencoded({ extended: false }));
+  
+  // parse json
+  app.use(express.json());
+  
+  // get all people
+  app.get("/api/v1/people", (req, res) => {
+    res.status(200).json({ success: true, data: people });
+  });
+  
+  // post request
+  app.post("/api/v1/people", (req, res) => {
+    const { name } = req.body;
+    if (!name) {
+      return res
+        .status(400)
+        .json({ success: false, msg: "Please Provide Credentials" });
+    }
+    res.status(201).json({
+      success: true,
+      data: [...people, { id: people.length + 1, name: name }],
+    });
+  });
+  
+  app.delete("/api/v1/people/:id", (req, res) => {
+    const { id } = req.params;
+    const person = people.find((person) => person.id === Number(id));
+    if (!person) {
+      return res
+        .status(404)
+        .json({ success: false, msg: `Person Not Found with id: ${id}` });
+    }
+    const newPeople = people.filter((person) => person.id !== Number(id));
+    res.status(200).json({ success: true, data: newPeople });
+  });
+  
+  app.put("/api/v1/people/:id", (req, res) => {
+    const { id } = req.params;
+    const { name } = req.body;
+    if (!name) {
+      return res.status(400).json({ success: false, msg: "Please Provide Name" });
+    }
+    const person = people.find((person) => person.id === Number(id));
+    if (!person) {
+      return res
+        .status(404)
+        .json({ success: false, msg: `Person Not Found with id ${id}` });
+    }
+    const newPeople = people.map((person) => {
+      if (person.id === Number(id)) {
+        person.name = name;
+      }
+      return person;
+    });
+    res.status(200).json({ success: true, data: newPeople });
+  });
+  
+  app.post("/login", (req, res) => {
+    console.log(req.body);
+    const { name } = req.body;
+    if (!name) {
+      return res.status(401).send("Please Provide Credentials");
+    }
+    return res
+      .status(200)
+      .send(
+        `<h1>Welcome ${name.slice(0, 1).toUpperCase() + name.slice(1)}!</h1>`
+      );
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ### node\myexpressapp\data\data.js
+  
+  ```js
+  const people = [
+    { id: 1, name: "john" },
+    { id: 2, name: "peter" },
+    { id: 3, name: "susan" },
+    { id: 4, name: "anna" },
+    { id: 5, name: "emma" },
+  ];
+
+  module.exports = { people };
+
+  ```
+
+  ![image](https://github.com/user-attachments/assets/39f39a7b-c368-4311-b7c1-0fdaa9fd3ca1)
+  ![image](https://github.com/user-attachments/assets/79de82ea-e8d4-49ff-8d73-7b26e294cb0a)
+  ![image](https://github.com/user-attachments/assets/540ccb3c-7ea4-49e5-963d-af68dea7edff)
+
+
+</details>
 
 
 
