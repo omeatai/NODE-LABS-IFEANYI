@@ -2448,7 +2448,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node Express - Set up Routes with Express Router </summary>
+  <summary>Node Express - Routes with Express Router </summary>
 
   ### node\myexpressapp\app.js
 
