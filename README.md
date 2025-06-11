@@ -2071,7 +2071,81 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express - Get Request with Postman </summary>
 
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  
+  const { people } = require("./data/data");
+  
+  // static assets
+  app.use(express.static("./public"));
+  
+  // parse form data
+  app.use(express.urlencoded({ extended: false }));
+  
+  // parse json
+  app.use(express.json());
+  
+  // get all people
+  app.get("/api/v1/people", (req, res) => {
+    res.status(200).json({ success: true, data: people });
+  });
+  
+  // post request
+  app.post("/api/v1/people", (req, res) => {
+    const { name } = req.body;
+    if (!name) {
+      return res
+        .status(400)
+        .json({ success: false, msg: "Please Provide Credentials" });
+    }
+    res
+      .status(201)
+      .json({
+        success: true,
+        data: [...people, { id: people.length + 1, name: name }],
+      });
+  });
+  
+  app.post("/login", (req, res) => {
+    console.log(req.body);
+    const { name } = req.body;
+    if (!name) {
+      return res.status(401).send("Please Provide Credentials");
+    }
+    return res
+      .status(200)
+      .send(
+        `<h1>Welcome ${name.slice(0, 1).toUpperCase() + name.slice(1)}!</h1>`
+      );
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ### node\myexpressapp\data\data.js
+  
+  ```js
+  const people = [
+    { id: 1, name: "john" },
+    { id: 2, name: "peter" },
+    { id: 3, name: "susan" },
+    { id: 4, name: "anna" },
+    { id: 5, name: "emma" },
+  ];
+  module.exports = { people };
+  ```
+
+</details>
 
 
 
