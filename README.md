@@ -2588,6 +2588,153 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node Express - Controllers with Routes </summary>
+
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 5000;
+  
+  const people = require("./routes/people");
+  const auth = require("./routes/auth");
+  
+  // static assets
+  app.use(express.static("./public"));
+  
+  // parse form data
+  app.use(express.urlencoded({ extended: false }));
+  
+  // parse json
+  app.use(express.json());
+  
+  // people route
+  app.use("/api/v1/people", people);
+  
+  // auth route
+  app.use("/login", auth);
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ### node\myexpressapp\routes\people.js
+  
+  ```js
+  const express = require("express");
+  const router = express.Router();
+  
+  const {
+    getPeople,
+    createPerson,
+    deletePerson,
+    updatePerson,
+  } = require("../controllers/peopleControllers");
+  
+  // get all people
+  router.get("/", getPeople);
+  
+  // post request
+  router.post("/", createPerson);
+  
+  // router.route("/").get(getPeople).post(createPerson);
+  
+  // delete person
+  router.delete("/:id", deletePerson);
+  
+  // update person
+  router.put("/:id", updatePerson);
+  
+  module.exports = router;
+
+  ```
+
+  ### node\myexpressapp\controllers\peopleControllers.js
+
+  ```js
+  const { people } = require("../data/data");
+  
+  // get all people
+  const getPeople = (req, res) => {
+    res.status(200).json({ success: true, data: people });
+  };
+  
+  // post request
+  const createPerson = (req, res) => {
+    const { name } = req.body;
+    if (!name) {
+      return res
+        .status(400)
+        .json({ success: false, msg: "Please Provide Credentials" });
+    }
+    res.status(201).json({
+      success: true,
+      data: [...people, { id: people.length + 1, name: name }],
+    });
+  };
+  
+  // delete person
+  const deletePerson = (req, res) => {
+    const { id } = req.params;
+    const person = people.find((person) => person.id === Number(id));
+    if (!person) {
+      return res
+        .status(404)
+        .json({ success: false, msg: `Person Not Found with id: ${id}` });
+    }
+    const newPeople = people.filter((person) => person.id !== Number(id));
+    res.status(200).json({ success: true, data: newPeople });
+  };
+  
+  // update person
+  const updatePerson = (req, res) => {
+    const { id } = req.params;
+    const { name } = req.body;
+    if (!name) {
+      return res.status(400).json({ success: false, msg: "Please Provide Name" });
+    }
+    const person = people.find((person) => person.id === Number(id));
+    if (!person) {
+      return res
+        .status(404)
+        .json({ success: false, msg: `Person Not Found with id ${id}` });
+    }
+    const newPeople = people.map((person) => {
+      if (person.id === Number(id)) {
+        person.name = name;
+      }
+      return person;
+    });
+    res.status(200).json({ success: true, data: newPeople });
+  };
+  
+  module.exports = { getPeople, createPerson, deletePerson, updatePerson };
+
+  ```
+
+  ### node\myexpressapp\data\data.js
+  
+  ```js
+  const people = [
+    { id: 1, name: "john" },
+    { id: 2, name: "peter" },
+    { id: 3, name: "susan" },
+    { id: 4, name: "anna" },
+    { id: 5, name: "emma" },
+  ];
+
+  module.exports = { people };
+  ```
+
+  ![image](https://github.com/user-attachments/assets/8af8990e-d080-45dc-b55e-1cecb559ac20)
+  ![image](https://github.com/user-attachments/assets/b639c838-b857-4c71-9c5f-9cfe7160d4f7)
+  ![image](https://github.com/user-attachments/assets/472365ce-cb07-4b35-8df9-d80ec8114ce1)
+
+</details>
 
 
 
