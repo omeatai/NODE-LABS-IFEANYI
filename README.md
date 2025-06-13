@@ -2780,6 +2780,31 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node myTaskManager Project - First Page </summary>
+
+  ### node\myexpressapp\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 3000;
+  
+  // routes
+  app.get("/", (req, res) => {
+    res.send("<h1>Task Manager App</h1>");
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ![image](https://github.com/user-attachments/assets/d1691776-907e-4a0f-bedf-11623433578f)
+  ![image](https://github.com/user-attachments/assets/11f0a91a-0ab2-4107-8643-76c2dd3d07d9)
+
+</details>
 
 
 
@@ -2819,7 +2844,7 @@ by Ifeanyi Omeata
 
 
 <details>
-  <summary>Node Express -  </summary>
+  <summary>Node myTaskManager Project -  </summary>
 
   ### node\myexpressapp\app.js
 
