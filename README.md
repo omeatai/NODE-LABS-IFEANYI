@@ -2736,7 +2736,49 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node myTaskManager Project - Setup </summary>
 
+  ### node\mytaskmanager\app.js
+  
+  ```js
+  console.log("Task Manager App");
+  ```
+
+  ### node\mytaskmanager\package.json
+
+  ```json
+  {
+    "name": "jobs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+      "start": "nodemon app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "dotenv": "^8.2.0",
+      "express": "^4.17.1",
+      "mongoose": "^5.11.10"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.7"
+    }
+  }
+  ```
+
+  ### Install dependencies and start project
+
+  ```
+  npm install && npm start
+  ```
+
+  ![image](https://github.com/user-attachments/assets/b953b7db-1baa-4d3f-9a98-7bd571b8e476)
+
+</details>
 
 
 
