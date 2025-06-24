@@ -2783,7 +2783,7 @@ by Ifeanyi Omeata
 <details>
   <summary>Node myTaskManager Project - First Page </summary>
 
-  ### node\myexpressapp\app.js
+  ### node\mytaskmanager\app.js
 
   ```js
   const express = require("express");
@@ -2806,7 +2806,86 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node myTaskManager Project - setup getAllTasks Route and Controller </summary>
 
+  ### node\mytaskmanager\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 3000;
+  const tasks = require("./routes/tasks");
+  
+  //middleware
+  app.use(express.json());
+  
+  // routes
+  app.get("/", (req, res) => {
+    res.send("<h1>Task Manager App</h1>");
+  });
+  
+  //get all tasks
+  app.use("/api/v1/tasks", tasks);
+  
+  //create a task
+  app.post("/api/v1/tasks", (req, res) => {
+    res.send("Create a task");
+  });
+  
+  //get a single task
+  app.get("/api/v1/tasks/:id", (req, res) => {
+    res.send("Get a single task");
+  });
+  
+  //update a task
+  app.patch("/api/v1/tasks/:id", (req, res) => {
+    res.send("Update a task");
+  });
+  
+  //delete a task
+  app.delete("/api/v1/tasks/:id", (req, res) => {
+    res.send("Delete a task");
+  });
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ### node\mytaskmanager\routes\tasks.js
+  
+  ```js
+  const express = require("express");
+  const router = express.Router();
+  const { getAllTasks } = require("../controllers/tasksController");
+  
+  router.route("/").get(getAllTasks);
+  
+  module.exports = router;
+  ```
+
+  ### node\mytaskmanager\controllers\tasksController.js
+
+  ```js
+  const getAllTasks = (req, res) => {
+    // res.send("<h1>Get all tasks</h1>");
+    res.json({
+      status: "success",
+      data: {
+        tasks: ["task1", "task2", "task3"],
+      },
+    });
+  };
+  
+  module.exports = { getAllTasks };
+  ```
+
+  ![image](https://github.com/user-attachments/assets/ee48f881-624d-4c94-a123-dec06ee9ec5b)
+  ![image](https://github.com/user-attachments/assets/f8ac9298-2251-4a50-9c68-1042d3a95e44)
+
+</details>
 
 
 
@@ -2846,20 +2925,22 @@ by Ifeanyi Omeata
 <details>
   <summary>Node myTaskManager Project -  </summary>
 
-  ### node\myexpressapp\app.js
+  ### node\mytaskmanager\app.js
 
   ```js
 
   ```
 
-  ### node\myexpressapp\pages\index.html
+  ### n
   
-  ```html
+  ```js
 
   ```
 
-  ```
-  node app.js
+  ### n
+
+  ```js
+ 
   ```
 
 
