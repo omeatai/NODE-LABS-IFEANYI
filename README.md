@@ -2887,6 +2887,139 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node myTaskManager Project - setup All Routes and Controllers </summary>
+
+  ### node\mytaskmanager\app.js
+
+  ```js
+  const express = require("express");
+  const app = express();
+  const port = 3000;
+  const tasks = require("./routes/tasks");
+  
+  //middleware
+  app.use(express.json());
+  
+  // routes
+  app.get("/", (req, res) => {
+    res.send("<h1>Task Manager App</h1>");
+  });
+  
+  // tasks
+  app.use("/api/v1/tasks", tasks);
+  
+  app.listen(port, () => {
+    console.log(`server is listening on port ${port}...`);
+  });
+  ```
+
+  ### node\mytaskmanager\routes\tasks.js
+  
+  ```js
+  const express = require("express");
+  const router = express.Router();
+  const {
+    getAllTasks,
+    createTask,
+    getTask,
+    updateTask,
+    deleteTask,
+  } = require("../controllers/tasksController");
+  
+  router.route("/").get(getAllTasks).post(createTask);
+  router.route("/:id").get(getTask).patch(updateTask).delete(deleteTask);
+  
+  module.exports = router;
+  ```
+
+  ### node\mytaskmanager\controllers\tasksController.js
+
+  ```js
+ //get all tasks
+  const getAllTasks = (req, res) => {
+    // res.send("<h1>Get all tasks</h1>");
+    try {
+      res.json({
+        status: "success",
+        code: 200,
+        data: {
+          tasks: ["task1", "task2", "task3"],
+        },
+      });
+    } catch (error) {
+      res.status(500).json({
+        status: "error",
+        code: 500,
+        message: "Internal server error",
+      });
+    }
+  };
+  
+  //get a single task
+  const getTask = (req, res) => {
+    //   res.send("Get a single task");
+    res.json({
+      status: "success",
+      code: 200,
+      message: "single task fetched successfully",
+      data: {
+        task: { id: req.params.id },
+      },
+    });
+  };
+  
+  //create a task
+  const createTask = (req, res) => {
+    //   res.send("Create a task");
+    res.json({
+      status: "success",
+      code: 201,
+      message: "task created successfully",
+      data: {
+        task: req.body.task,
+      },
+    });
+  };
+  
+  //update a task
+  const updateTask = (req, res) => {
+    //   res.send("Update a task");
+    res.json({
+      status: "success",
+      code: 200,
+      message: "task updated successfully",
+      data: {
+        id: req.params.id,
+        task: req.body.task,
+      },
+    });
+  };
+  
+  //delete a task
+  const deleteTask = (req, res) => {
+    //   res.send("Delete a task");
+    res.json({
+      status: "success",
+      code: 200,
+      message: "task deleted successfully",
+      data: {
+        task: { id: req.params.id },
+      },
+    });
+  };
+  
+  module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask };
+  ```
+
+  ![image](https://github.com/user-attachments/assets/7be67666-dbf2-47ea-822e-a74c8d09230f)
+  ![image](https://github.com/user-attachments/assets/6a433926-6663-433f-a398-be15a6e31ea9)
+  ![image](https://github.com/user-attachments/assets/8a20bdb9-85dc-47fa-96bb-bf013c6e40dc)
+  ![image](https://github.com/user-attachments/assets/8491c26e-10c6-4394-9d66-d6e15227c798)
+  ![image](https://github.com/user-attachments/assets/22721c54-f525-492d-a052-3d0f29a21005)
+  ![image](https://github.com/user-attachments/assets/0946d2ad-9344-488c-b5c3-52e83083808c)
+
+</details>
 
 
 
