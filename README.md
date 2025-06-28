@@ -3037,24 +3037,59 @@ by Ifeanyi Omeata
   mongodb+srv://<username>:<db_password>@cluster0.unp2imh.mongodb.net/<db_name>?retryWrites=true&w=majority&appName=Cluster0
   ```
 
-  ### node\mytaskmanager\app.js
+  ### LABS\node\mytaskmanager\app.js
 
   ```js
-
+  const connectDB = require("./db/connect");
+  const express = require("express");
+  const app = express();
+  const port = 3000;
+  const tasks = require("./routes/tasks");
+  
+  //middleware
+  app.use(express.json());
+  
+  // routes
+  app.get("/", (req, res) => {
+    res.send("<h1>Task Manager App</h1>");
+  });
+  
+  // tasks
+  app.use("/api/v1/tasks", tasks);
+  
+  app.listen(port, () => {
+    // Connect to database
+    connectDB();
+    console.log(`server is listening on port ${port}...`);
+  });
   ```
 
-  ### n
+  ### LABS\node\mytaskmanager\db\connect.js
   
   ```js
-
+  const mongoose = require("mongoose");
+  
+  const connectDB = async () => {
+    try {
+      const username = "";
+      const password = "";
+      const db_name = "";
+  
+      const connectionString = `mongodb+srv://${username}:${password}@cluster0.unp2imh.mongodb.net/${db_name}?retryWrites=true&w=majority&appName=Cluster0`;
+  
+      const conn = await mongoose.connect(connectionString);
+  
+      console.log(`MongoDB: CONNECTED TO THE DB.... ${conn.connection.host}`);
+    } catch (error) {
+      console.error(`MongoDB: CONNECTION ERROR.... ${error.message}`);
+      process.exit(1);
+    }
+  };
+  
+  module.exports = connectDB;
   ```
 
-  ### n
-
-  ```js
- 
-  ```
-
+  ![image](https://github.com/user-attachments/assets/a560f090-cf9a-4ad6-af92-a774db3a6ee2)
 
 
 </details>
@@ -3095,7 +3130,7 @@ by Ifeanyi Omeata
 <details>
   <summary>Node myTaskManager Project -  </summary>
 
-  ### node\mytaskmanager\app.js
+  ### LABS\node\mytaskmanager\app.js
 
   ```js
 
