@@ -2807,7 +2807,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node myTaskManager Project - setup getAllTasks Route and Controller </summary>
+  <summary>Node myTaskManager Project - Setup getAllTasks Route and Controller </summary>
 
   ### node\mytaskmanager\app.js
 
@@ -2888,7 +2888,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node myTaskManager Project - setup All Routes and Controllers </summary>
+  <summary>Node myTaskManager Project - Setup All Routes and Controllers </summary>
 
   ### node\mytaskmanager\app.js
 
@@ -3022,7 +3022,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node myTaskManager Project - setup Database Connection with Mongoose and Mongodb.com </summary>
+  <summary>Node myTaskManager Project - Setup Database Connection with Mongoose and Mongodb.com </summary>
 
   ### Install Mongoose 
 
@@ -3094,6 +3094,30 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node myTaskManager Project - Setup ENV VARS for Credentials </summary>
+
+  ### LABS\node\mytaskmanager\app.js
+
+  ```js
+
+  ```
+
+  ### n
+  
+  ```js
+
+  ```
+
+  ### n
+
+  ```js
+ 
+  ```
+
+
+
+</details>
 
 
 
