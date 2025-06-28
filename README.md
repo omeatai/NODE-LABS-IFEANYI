@@ -10,7 +10,7 @@ by Ifeanyi Omeata
 
   ### Confirm Node Versions
   
-  ```
+  ```sh
   node --version
   ```
 
@@ -62,7 +62,7 @@ by Ifeanyi Omeata
   }, 1000);
   ```
 
-  ```
+  ```sh
   node app.js
   ```
 
@@ -148,7 +148,7 @@ by Ifeanyi Omeata
   console.log("Current OS: ", currentOS);
   ```
 
-  ```
+  ```sh
   node app.js
   ```
 
@@ -175,7 +175,7 @@ by Ifeanyi Omeata
   console.log(absolute);
   ```
 
-  ```
+  ```sh
   node app.js
   ```
 
@@ -206,7 +206,7 @@ by Ifeanyi Omeata
   console.log("starting the next one");
   ```
 
-  ```
+  ```sh
   node app.js
   ```
 
@@ -313,7 +313,7 @@ by Ifeanyi Omeata
   server.listen(5000);
   ```
 
-  ```
+  ```sh
   node app.js
   ```
 
@@ -367,7 +367,7 @@ by Ifeanyi Omeata
   });
   ```
 
-  ```
+  ```sh
   node app.js
   ```
 
@@ -401,7 +401,7 @@ by Ifeanyi Omeata
   // npm init -y (everything default)
   ```
 
-  ```
+  ```sh
   npm init -y
   npm i lodash
   ```
@@ -465,7 +465,7 @@ by Ifeanyi Omeata
 
   ### .gitignore:
 
-  ```
+  ```sh
   /node_modules
   ```
 
@@ -496,13 +496,13 @@ by Ifeanyi Omeata
 
   ### Install Nodemon as Dependency:
 
-  ```
+  ```sh
   npm i nodemon
   ```
 
   ### Install Nodemon as devDependency:
 
-  ```
+  ```sh
   npm i nodemon -D
   npm i nodemon --save-dev
   ```
@@ -534,7 +534,7 @@ by Ifeanyi Omeata
 <details>
   <summary>Node NPM Uninstall Dependency </summary>
 
-  ```
+  ```sh
   npm uninstall bootstrap
   ```
 
@@ -577,7 +577,7 @@ by Ifeanyi Omeata
 
   ### Run Script Command:
 
-  ```
+  ```sh
   npm run dev
   ```
 
