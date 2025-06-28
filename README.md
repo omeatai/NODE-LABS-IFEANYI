@@ -3027,7 +3027,14 @@ by Ifeanyi Omeata
   ### Install Mongoose 
 
   ```sh
-  npm i mongoose   
+  npm i mongoose
+  npm install mongoose@latest  
+  ```
+
+  ### Mongodb.com Connection String
+
+  ```sh
+  mongodb+srv://<username>:<db_password>@cluster0.unp2imh.mongodb.net/<db_name>?retryWrites=true&w=majority&appName=Cluster0
   ```
 
   ### node\mytaskmanager\app.js
