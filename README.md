@@ -3021,6 +3021,36 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node myTaskManager Project - setup Database Connection with Mongoose and Mongodb.com </summary>
+
+  ### Install Mongoose 
+
+  ```sh
+  npm i mongoose   
+  ```
+
+  ### node\mytaskmanager\app.js
+
+  ```js
+
+  ```
+
+  ### n
+  
+  ```js
+
+  ```
+
+  ### n
+
+  ```js
+ 
+  ```
+
+
+
+</details>
 
 
 
