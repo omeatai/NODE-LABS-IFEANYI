@@ -3183,25 +3183,219 @@ by Ifeanyi Omeata
   ### LABS\node\mytaskmanager\app.js
 
   ```js
-
+  require("dotenv").config();
+  const connectDB = require("./db/connect");
+  const express = require("express");
+  const app = express();
+  const port = 3000;
+  const tasks = require("./routes/tasks");
+  
+  //middleware
+  app.use(express.json());
+  
+  // routes
+  app.get("/", (req, res) => {
+    res.send("<h1>Task Manager App</h1>");
+  });
+  
+  // tasks
+  app.use("/api/v1/tasks", tasks);
+  
+  app.listen(port, async () => {
+    // Connect to database
+    await connectDB();
+    console.log(`server is listening on port ${port}...`);
+  });
   ```
 
-  ### n
+  ### LABS\node\mytaskmanager\models\Taskmodel.js
   
   ```js
+  const mongoose = require("mongoose");
+  
+  const taskSchema = new mongoose.Schema({
+    task: {
+      type: String,
+      required: [true, "must provide name"],
+      trim: true,
+      maxlength: [100, "name can not be more than 20 characters"],
+    },
+    completed: {
+      type: Boolean,
+      default: false,
+      required: [true, "must provide completed status"],
+    },
+  });
+  
+  module.exports = mongoose.model("Taskmodel", taskSchema);
 
   ```
 
-  ### n
-
-  ```js
- 
-  ```
-
+  ![image](https://github.com/user-attachments/assets/cdd199a8-1310-4f3a-8c9d-2df86cec0a62)
 
 
 </details>
 
+<details>
+  <summary>Node myTaskManager Project - Mongoose Create Task </summary>
+
+  ### LABS\node\mytaskmanager\app.js
+
+  ```js
+  require("dotenv").config();
+  const connectDB = require("./db/connect");
+  const express = require("express");
+  const app = express();
+  const port = 3000;
+  const tasks = require("./routes/tasks");
+  
+  //middleware
+  app.use(express.json());
+  
+  // routes
+  app.get("/", (req, res) => {
+    res.send("<h1>Task Manager App</h1>");
+  });
+  
+  // tasks
+  app.use("/api/v1/tasks", tasks);
+  
+  app.listen(port, async () => {
+    // Connect to database
+    await connectDB();
+    console.log(`server is listening on port ${port}...`);
+  });
+  ```
+
+  ### LABS\node\mytaskmanager\routes\tasks.js
+  
+  ```js
+  const express = require("express");
+  const router = express.Router();
+  const {
+    getAllTasks,
+    createTask,
+    getTask,
+    updateTask,
+    deleteTask,
+  } = require("../controllers/tasksController");
+  
+  router.route("/").get(getAllTasks).post(createTask);
+  router.route("/:id").get(getTask).patch(updateTask).delete(deleteTask);
+  
+  module.exports = router;
+  ```
+
+  ### LABS\node\mytaskmanager\controllers\tasksController.js
+
+  ```js
+  const TaskModel = require("../models/Taskmodel");
+  
+  //create a task
+  const createTask = async (req, res) => {
+    try {
+      const task = await TaskModel.create(req.body);
+      res.status(201).json({
+        task,
+      });
+    } catch (error) {
+      res.status(500).json({
+        status: "error",
+        code: 500,
+        msg: error.message,
+      });
+    }
+  };
+
+  //get all tasks
+  const getAllTasks = (req, res) => {
+    // res.send("<h1>Get all tasks</h1>");
+    try {
+      res.json({
+        status: "success",
+        code: 200,
+        data: {
+          tasks: ["task1", "task2", "task3"],
+        },
+      });
+    } catch (error) {
+      res.status(500).json({
+        status: "error",
+        code: 500,
+        message: "Internal server error",
+      });
+    }
+  };
+  
+  //get a single task
+  const getTask = (req, res) => {
+    //   res.send("Get a single task");
+    res.json({
+      status: "success",
+      code: 200,
+      message: "single task fetched successfully",
+      data: {
+        task: { id: req.params.id },
+      },
+    });
+  };
+  
+  //update a task
+  const updateTask = (req, res) => {
+    //   res.send("Update a task");
+    res.json({
+      status: "success",
+      code: 200,
+      message: "task updated successfully",
+      data: {
+        id: req.params.id,
+        task: req.body.task,
+      },
+    });
+  };
+  
+  //delete a task
+  const deleteTask = (req, res) => {
+    //   res.send("Delete a task");
+    res.json({
+      status: "success",
+      code: 200,
+      message: "task deleted successfully",
+      data: {
+        task: { id: req.params.id },
+      },
+    });
+  };
+
+  module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask };
+  ```
+
+  ### LABS\node\mytaskmanager\models\Taskmodel.js
+
+  ```js
+  const mongoose = require("mongoose");
+  
+  const taskSchema = new mongoose.Schema({
+    task: {
+      type: String,
+      required: [true, "must provide name"],
+      trim: true,
+      maxlength: [50, "name can not be more than 50 characters"],
+    },
+    completed: {
+      type: Boolean,
+      default: false,
+    },
+  });
+  
+  module.exports = mongoose.model("Taskmodel", taskSchema);
+  ```
+
+  ![image](https://github.com/user-attachments/assets/680efb93-722e-4650-8711-3fcf6e9555c2)
+  ![image](https://github.com/user-attachments/assets/b0b1bbe1-24c1-45c6-b9ab-bdcc63e54017)
+  ![image](https://github.com/user-attachments/assets/50e755fe-36d6-43f6-bfab-738989caa2a7)
+
+</details>
 
 
 
