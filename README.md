@@ -3097,6 +3097,89 @@ by Ifeanyi Omeata
 <details>
   <summary>Node myTaskManager Project - Setup ENV VARS for Credentials </summary>
 
+  ### Install dotenv
+
+  ```js
+  npm install dotenv@latest
+  ```
+
+  ### LABS\node\mytaskmanager\app.js
+
+  ```js
+  require("dotenv").config();
+  const connectDB = require("./db/connect");
+  const express = require("express");
+  const app = express();
+  const port = 3000;
+  const tasks = require("./routes/tasks");
+  
+  //middleware
+  app.use(express.json());
+  
+  // routes
+  app.get("/", (req, res) => {
+    res.send("<h1>Task Manager App</h1>");
+  });
+  
+  // tasks
+  app.use("/api/v1/tasks", tasks);
+  
+  app.listen(port, async () => {
+    // Connect to database
+    await connectDB();
+    console.log(`server is listening on port ${port}...`);
+  });
+  ```
+
+  ### LABS\node\mytaskmanager\db\connect.js
+  
+  ```js
+  const mongoose = require("mongoose");
+
+  const connectDB = async () => {
+    const USERNAME = process.env.DB_USERNAME;
+    const PASSWORD = process.env.DB_PASSWORD;
+    const DB_NAME = process.env.DB_NAME;
+  
+    try {
+      const connectionString = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.unp2imh.mongodb.net/${DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
+  
+      const conn = await mongoose.connect(connectionString);
+      console.log(`MongoDB: CONNECTED TO THE DB.... ${conn.connection.host}`);
+    } catch (error) {
+      console.error(`MongoDB: CONNECTION ERROR.... ${error.message}`);
+      process.exit(1);
+    }
+  };
+  
+  module.exports = connectDB;
+  ```
+
+  ### LABS\node\mytaskmanager\.env
+
+  ```sh
+  NODE_ENV=development
+
+  DB_USERNAME=******
+  DB_PASSWORD=*****
+  DB_NAME=*********
+  ```
+
+  ### LABS\node\mytaskmanager\.gitignore
+
+  ```sh
+  /node_modules
+  .env
+  keys.txt 
+  ```
+
+  ![image](https://github.com/user-attachments/assets/c1414f9b-b49d-4a0a-9a09-04520b475681)
+
+</details>
+
+<details>
+  <summary>Node myTaskManager Project - Setup Mongoose Schema and Model </summary>
+
   ### LABS\node\mytaskmanager\app.js
 
   ```js
@@ -3118,8 +3201,6 @@ by Ifeanyi Omeata
 
 
 </details>
-
-
 
 
 
