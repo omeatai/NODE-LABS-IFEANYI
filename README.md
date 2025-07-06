@@ -3531,6 +3531,146 @@ by Ifeanyi Omeata
 
 </details>
 
+<details>
+  <summary>Node myTaskManager Project - Mongoose Get Single Task Controller </summary>
+
+  ### LABS\node\mytaskmanager\app.js
+
+  ```js
+  require("dotenv").config();
+  const connectDB = require("./db/connect");
+  const express = require("express");
+  const app = express();
+  const port = 3000;
+  const tasks = require("./routes/tasks");
+  
+  //middleware
+  app.use(express.json());
+  
+  // routes
+  app.get("/", (req, res) => {
+    res.send("<h1>Task Manager App</h1>");
+  });
+  
+  // tasks
+  app.use("/api/v1/tasks", tasks);
+  
+  app.listen(port, async () => {
+    // Connect to database
+    await connectDB();
+    console.log(`server is listening on port ${port}...`);
+  });
+
+  ```
+
+  ### LABS\node\mytaskmanager\routes\tasks.js
+  
+  ```js
+  const express = require("express");
+  const router = express.Router();
+  const {
+    getAllTasks,
+    createTask,
+    getTask,
+    updateTask,
+    deleteTask,
+  } = require("../controllers/tasksController");
+  
+  router.route("/").get(getAllTasks).post(createTask);
+  router.route("/:id").get(getTask).patch(updateTask).delete(deleteTask);
+  
+  module.exports = router;
+  ```
+
+  ### LABS\node\mytaskmanager\controllers\tasksController.js
+
+  ```js
+  const TaskModel = require("../models/Taskmodel");
+  
+  //create a task
+  const createTask = async (req, res) => {
+    try {
+      const task = await TaskModel.create(req.body);
+      res.status(201).json({
+        task,
+      });
+    } catch (error) {
+      res.status(500).json({
+        status: "error",
+        code: 500,
+        msg: error.message,
+      });
+    }
+  };
+  
+  //get all tasks
+  const getAllTasks = async (req, res) => {
+    try {
+      const tasks = await TaskModel.find({});
+      res.status(200).json({ tasks });
+    } catch (error) {
+      res.status(500).json({
+        msg: error.message,
+      });
+    }
+  };
+  
+  //get a single task
+  const getTask = async (req, res) => {
+    try {
+      const { id: taskID } = req.params;
+      const task = await TaskModel.findOne({ _id: taskID });
+      if (!task) {
+        return res
+          .status(404)
+          .json({ msg: `No task with this id : ${taskID} found` });
+      }
+      res.status(200).json({ task });
+    } catch (error) {
+      res.status(500).json({
+        msg: error.message,
+      });
+    }
+  };
+  
+  //update a task
+  const updateTask = (req, res) => {
+    //   res.send("Update a task");
+    res.json({
+      status: "success",
+      code: 200,
+      message: "task updated successfully",
+      data: {
+        id: req.params.id,
+        task: req.body.task,
+      },
+    });
+  };
+  
+  //delete a task
+  const deleteTask = (req, res) => {
+    //   res.send("Delete a task");
+    res.json({
+      status: "success",
+      code: 200,
+      message: "task deleted successfully",
+      data: {
+        task: { id: req.params.id },
+      },
+    });
+  };
+  
+  module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask };
+
+  ```
+
+  ![image](https://github.com/user-attachments/assets/b89d92b1-dfc6-4033-8be7-894aa58690ef)
+  ![image](https://github.com/user-attachments/assets/cb07a002-ae10-486c-b82e-42c8c7595239)
+  ![image](https://github.com/user-attachments/assets/78980944-9100-422a-9c2d-fa46f3ae4ed8)
+  ![image](https://github.com/user-attachments/assets/a88dae8b-b8b5-4ad2-8d8e-b5afc18a343a)
+  ![image](https://github.com/user-attachments/assets/085251bf-52d7-436c-937a-84863aa22dc4)
+
+</details>
 
 
 
