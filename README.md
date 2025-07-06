@@ -3399,7 +3399,7 @@ by Ifeanyi Omeata
 </details>
 
 <details>
-  <summary>Node myTaskManager Project - Get All tasks Controller </summary>
+  <summary>Node myTaskManager Project - Mongoose Get All tasks Controller </summary>
 
   ### LABS\node\mytaskmanager\app.js
 
