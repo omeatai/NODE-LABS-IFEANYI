@@ -1,12 +1,8 @@
 # NODE-LABS-IFEANYI by Ifeanyi Omeata
 
-## #LABS
-
-### [1 - Node Fundamentals - Coding Addict](https://github.com/omeatai/NODE-LABS-IFEANYI/blob/main/labs/1.md)
-
 ### CODING ADDICT
 
-- [ ] [Node Fundamentals](https://www.codingaddict.io/l/products)
+- [ ] [Node Fundamentals](https://www.codingaddict.io/l/products) | [Notes](https://github.com/omeatai/NODE-LABS-IFEANYI/blob/main/labs/1.md)
 
 ### NODE BASICS
 
